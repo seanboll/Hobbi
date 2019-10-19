@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>6713269658-u8f2mona5n0a8n1o37q7emp30g784udl.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.6713269658-u8f2mona5n0a8n1o37q7emp30g784udl</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCI0wGb77Q44AazLu87_RGMB1lDSxXdfiA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>6713269658</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.matchmakers.hobbi</string>
+	<key>PROJECT_ID</key>
+	<string>hobbi-d251e</string>
+	<key>STORAGE_BUCKET</key>
+	<string>hobbi-d251e.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:6713269658:ios:34773b8c9684ddfbe0ae23</string>
+	<key>DATABASE_URL</key>
+	<string>https://hobbi-d251e.firebaseio.com</string>
+</dict>
+</plist>

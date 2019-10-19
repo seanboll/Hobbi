@@ -1,0 +1,3 @@
+Project name:  Hobbi
+Company name:  matchmakers
+Package name:  com.matchmakers.hobbi
