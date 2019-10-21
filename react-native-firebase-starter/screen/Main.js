@@ -18,13 +18,12 @@ export default class Main extends React.Component {
 
 render() {
     const { currentUser } = this.state
-
     return (
       <ScrollView
         style={styles.container}>
-          <Text style={styles.getStartedText}>
-            Hobbi
-          </Text>
+          <Text style={styles.getStartedText}>Hobbi</Text>
+          <View style={styles.rectangle}>
+          </View>
           <TouchableOpacity onPress={() => this.props.navigation.navigate('Login')}>
               <Text style={styles.loginText}>Login with Email</Text>
           </TouchableOpacity>
@@ -50,6 +49,18 @@ const styles = StyleSheet.create({
     height: 69,
     left: 46,
     top: 549,
+  },
+  rectangle: {
+    position: 'absolute',
+    width: 200,
+    height: 49,
+    left: 87,
+    top: 537,
+
+    backgroundColor: '#EBB448',
+    borderWidth: 3, //solid #FFFBFB,
+    borderColor: "white",
+    borderRadius: 34.5
   },
   loginText: {
     fontFamily: "Montserrat-ExtraBold",

@@ -7,11 +7,8 @@ export default class HomePage extends React.Component {
     return (
       <ScrollView
         style={styles.container}>
-        //rectangle
         <View style={styles.rectangle}>
         </View>
-
-
       </ScrollView>
   );
   }
