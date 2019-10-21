@@ -21,6 +21,7 @@
 		2DCD954D1E0B4F2C00145EB5 /* HobbiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* HobbiTests.m */; };
 		573023292354300F00F7BFBF /* MontserratAlternates-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 573023282354300F00F7BFBF /* MontserratAlternates-ExtraBold.ttf */; };
 		5730232D2354387400F7BFBF /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5730232C2354387400F7BFBF /* Montserrat-ExtraBold.ttf */; };
+		57B6B1C5235D88490011BEBD /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57B6B1C4235D88490011BEBD /* Montserrat-Bold.ttf */; };
 		66F583A38C047519D1E18159 /* libPods-Hobbi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 599A1087F9C545123EFD61BE /* libPods-Hobbi.a */; };
 		ADDA258B0C3DE0261C60A364 /* libPods-Hobbi-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B23455DE3C4D5673E7318E /* libPods-Hobbi-tvOSTests.a */; };
 		CB23C3742761BB2944FDCE0B /* libPods-HobbiTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C3AC53CF282E97E63953C49 /* libPods-HobbiTests.a */; };
@@ -68,6 +69,7 @@
 		573023262354111400F7BFBF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		573023282354300F00F7BFBF /* MontserratAlternates-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MontserratAlternates-ExtraBold.ttf"; path = "../assets/fonts/MontserratAlternates-ExtraBold.ttf"; sourceTree = "<group>"; };
 		5730232C2354387400F7BFBF /* Montserrat-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-ExtraBold.ttf"; path = "../assets/fonts/Montserrat-ExtraBold.ttf"; sourceTree = "<group>"; };
+		57B6B1C4235D88490011BEBD /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Bold.ttf"; path = "../assets/fonts/Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		599A1087F9C545123EFD61BE /* libPods-Hobbi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Hobbi.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C04F7E60E3774814827066E /* Pods-Hobbi-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hobbi-tvOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hobbi-tvOS/Pods-Hobbi-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		7A230A0DEF48DF21D545AA71 /* Pods-Hobbi-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hobbi-tvOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hobbi-tvOS/Pods-Hobbi-tvOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				57B6B1C4235D88490011BEBD /* Montserrat-Bold.ttf */,
 				5730232C2354387400F7BFBF /* Montserrat-ExtraBold.ttf */,
 				573023262354111400F7BFBF /* GoogleService-Info.plist */,
 				13B07FAE1A68108700A75B9A /* Hobbi */,
@@ -364,6 +367,7 @@
 			files = (
 				5730232D2354387400F7BFBF /* Montserrat-ExtraBold.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				57B6B1C5235D88490011BEBD /* Montserrat-Bold.ttf in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				573023292354300F00F7BFBF /* MontserratAlternates-ExtraBold.ttf in Resources */,
 				27760E91229B6FDF00F5F127 /* GoogleService-Info.plist in Resources */,
@@ -400,7 +404,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
 		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
 			isa = PBXShellScriptBuildPhase;

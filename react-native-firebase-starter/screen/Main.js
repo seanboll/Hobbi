@@ -16,6 +16,70 @@ export default class Main extends React.Component {
 
   }
 
+render() {
+    const { currentUser } = this.state
+
+    return (
+      <ScrollView
+        style={styles.container}>
+          <Text style={styles.getStartedText}>
+            Hobbi
+          </Text>
+          <TouchableOpacity onPress={() => this.props.navigation.navigate('Login')}>
+              <Text style={styles.loginText}>Login with Email</Text>
+          </TouchableOpacity>
+      </ScrollView>
+  );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    position: 'relative',
+    width: 375,
+    height: 812,
+    backgroundColor: '#DFB662'
+  },
+  circleGradient: {
+    backgroundColor: "white",
+    flex: 3,
+    margin: 80
+  },
+  visit: {
+    width: 283,
+    height: 69,
+    left: 46,
+    top: 549,
+  },
+  loginText: {
+    fontFamily: "Montserrat-ExtraBold",
+    fontSize: 18,
+    lineHeight: 22,
+    alignItems: 'center',
+    textAlign: 'center',
+    color: '#FFFEFE',
+    width: 283,
+    height: 69,
+    left: 46,
+    top: 549
+  },
+  getStartedText: {
+    fontFamily: "MontserratAlternates-ExtraBold",
+    fontSize: 50,
+    color: 'white',
+    lineHeight: 71,
+    textAlign: 'center',
+    alignItems: 'center',
+    position: 'absolute',
+    width: 279,
+    height: 153,
+    left: 67,
+    top: 226
+  },
+});
+
+
+/*
   render() {
     const { currentUser } = this.state
 
@@ -52,7 +116,7 @@ const styles = StyleSheet.create({
     margin: 3,
     flex: 3,
     textAlign: "center",
-    backgroundColor: "#DFB662",
+    backgroundColor: "#EBB448",
     color: 'white',
     lineHeight:30,
     fontSize: 20,
@@ -73,3 +137,4 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 });
+*/
