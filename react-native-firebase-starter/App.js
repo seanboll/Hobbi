@@ -7,6 +7,7 @@ import Loading from './screen/Loading'
 import SignUp from './screen/SignUp'
 import Login from './screen/Login'
 import Main from './screen/Main'
+import HomePage from './screen/HomePage'
 
 // create our app's navigation stack
 const AppStack = createSwitchNavigator(
@@ -22,6 +23,9 @@ const AppStack = createSwitchNavigator(
 	},
 	Login: {
 		screen: Login
+	},
+	HomePage: {
+		screen: HomePage
 	},
 	Main: {
 		screen: Main

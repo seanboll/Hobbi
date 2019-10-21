@@ -2,6 +2,7 @@ import React from 'react'
 import { StyleSheet, Text, TextInput, View, Button, Font } from 'react-native'
 import firebase from 'react-native-firebase'
 
+
 export default class Login extends React.Component {
   state = { email: '', password: '', errorMessage: null }
 
@@ -10,7 +11,7 @@ export default class Login extends React.Component {
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
-      .then(() => this.props.navigation.navigate('Main'))
+      .then(() => this.props.navigation.navigate('HomePage'))
       .catch(error => this.setState({ errorMessage: error.message }))
   }
 

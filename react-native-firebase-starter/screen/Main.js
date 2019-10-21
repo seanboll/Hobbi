@@ -38,12 +38,6 @@ export default class Main extends React.Component {
   }
 }
 
-
-Main.navigationOptions = {
-  header: null,
-};
-
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
