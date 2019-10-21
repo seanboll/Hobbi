@@ -21,6 +21,8 @@ render() {
     return (
       <ScrollView
         style={styles.container}>
+        <Image source = {require('../assets/Logo_main.png')}
+          style = {styles.logo} />
           <Text style={styles.getStartedText}>Hobbi</Text>
           <View style={styles.rectangle}>
           </View>
@@ -43,6 +45,13 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     flex: 3,
     margin: 80
+  },
+  logo: {
+    position: 'absolute',
+    width: 50,
+    height: 36,
+    left: 73,
+    top: 245
   },
   visit: {
     width: 283,

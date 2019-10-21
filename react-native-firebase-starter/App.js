@@ -8,6 +8,8 @@ import SignUp from './screen/SignUp'
 import Login from './screen/Login'
 import Main from './screen/Main'
 import HomePage from './screen/HomePage'
+import Profile from './screen/Profile'
+import Chat from './screen/Chat'
 
 // create our app's navigation stack
 const AppStack = createSwitchNavigator(
@@ -29,6 +31,12 @@ const AppStack = createSwitchNavigator(
 	},
 	Main: {
 		screen: Main
+	},
+	Profile: {
+		screen: Profile
+	},
+	Chat: {
+		screen: Chat
 	}
 });
 export default createAppContainer(
