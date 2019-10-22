@@ -11,37 +11,26 @@ export default class HomePage extends React.Component {
 
         <TouchableHighlight
          style={styles.logoButton}
-         onPress={() => this.props.navigation.navigate('HobbyPage')}>
+         onPress={() => this.props.navigation.navigate('HomePage')}>
           <Image source = {require('../assets/Logo.png')}
             style = {styles.logo} />
         </TouchableHighlight>
 
-        <View style={styles.rectangle}>
-        </View>
-          
-
-        <Image source = {require('../assets/profile_picture_example.png')}
-          style = {styles.profilePicture} />
-
         <Text style = {styles.profileBioHeader}>
-        Jordan, 23
-        </Text>
-
-        <Text style = {styles.profileBio}>
-          {"\n"}
-          - rock climbing (5) {"\n"}
-          - kayaking (4) {"\n"}
-          - basketball (1) {"\n"}
-          - tennis (2) {"\n"}
-          - mountain biking (2)
+          Hobby(s): rock climbing (5), kayaking (4), basketball (1), tennis (2), mountain biking (2) {"\n"}
+          About Me: Primarily looking to find some fellow rock climbers but open to other hobbies as well!  {"\n"} 
+          Location: Atlanta, Georgia {"\n"}
+          Fun Fact: I climbed Mt. Everest twice in one day {"\n"}
+          Spirit Animal: Mountain goat
         </Text>
 
         <TouchableHighlight
-           style={styles.infoButton}
-           onPress={() => this.props.navigation.navigate('UserInfo')}>
-           <Icon name="info"  size={30} color = '#696969'>
-          </Icon>
+        style={styles.rectangleButton}
+         onPress={() => this.props.navigation.navigate('HomePage')}>
+        <View style={styles.rectangle}>
+        </View>
         </TouchableHighlight>
+
 
         <TouchableHighlight
          style={styles.profileButton}
@@ -92,15 +81,6 @@ const styles = StyleSheet.create({
     left: 148,
     top: 69,
   },
-  profilePicture: {
-    width: 200,
-    height: 200,
-    borderRadius: 175.5,
-    borderColor: 'black',
-    left: 79,
-    top: 190,
-    borderWidth: 1
-  },
   profileButton: {
     position: 'absolute',
     width: 50,
@@ -118,12 +98,11 @@ const styles = StyleSheet.create({
   profileBioHeader: {
     position: 'absolute',
     width: 352,
-    height: 232,
     left: 12,
-    top: 404,
+    top: 200,
 
     fontFamily: 'Montserrat-Black',
-    fontSize: 25,
+    fontSize: 18,
     lineHeight: 35,
     textAlign: 'center'
   },
@@ -135,11 +114,20 @@ const styles = StyleSheet.create({
     top: 404,
 
     fontFamily: 'Montserrat-Bold',
-    fontSize: 18,
+    fontSize: 25,
     lineHeight: 35,
     textAlign: 'center'
   },
   rectangle: {
+    height: 493,
+    width: 357,
+    backgroundColor: '#EBB448',
+    opacity: 0.3,
+    position: 'absolute', 
+    top: 163,
+    left: 9
+  },
+  rectangleButton: {
     height: 493,
     width: 357,
     backgroundColor: '#EBB448',
@@ -185,12 +173,5 @@ const styles = StyleSheet.create({
   xButtonIcon: {
     position: 'absolute',
     backgroundColor: '#ECECEC'
-  },
-  infoButton: {
-    position: 'absolute',
-    width: 30,
-    height: 30,
-    left: 300,
-    top: 405
   }
 });

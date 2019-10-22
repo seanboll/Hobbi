@@ -3,7 +3,7 @@ import { StyleSheet, Button, ScrollView, Platform, Image, Text, View, TouchableO
 import firebase from 'react-native-firebase'
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
-export default class HomePage extends React.Component {
+export default class HobbyPage extends React.Component {
   render() {
     return (
       <ScrollView
@@ -11,37 +11,36 @@ export default class HomePage extends React.Component {
 
         <TouchableHighlight
          style={styles.logoButton}
-         onPress={() => this.props.navigation.navigate('HobbyPage')}>
+         onPress={() => this.props.navigation.navigate('HomePage')}>
           <Image source = {require('../assets/Logo.png')}
             style = {styles.logo} />
         </TouchableHighlight>
 
-        <View style={styles.rectangle}>
-        </View>
-          
+        <Image source = {require('../assets/kayak.png')}
+          style = {styles.kayak} />
 
-        <Image source = {require('../assets/profile_picture_example.png')}
-          style = {styles.profilePicture} />
+        <Image source = {require('../assets/rock_climb.png')}
+          style = {styles.rockClimb} />
 
-        <Text style = {styles.profileBioHeader}>
-        Jordan, 23
-        </Text>
+        <Image source = {require('../assets/badminton.png')}
+          style = {styles.badminton} />
 
-        <Text style = {styles.profileBio}>
-          {"\n"}
-          - rock climbing (5) {"\n"}
-          - kayaking (4) {"\n"}
-          - basketball (1) {"\n"}
-          - tennis (2) {"\n"}
-          - mountain biking (2)
-        </Text>
+        <Image source = {require('../assets/bowling.png')}
+          style = {styles.bowling} />
+
+        <Image source = {require('../assets/basketball.png')}
+          style = {styles.basketball} />
+
+        <Image source = {require('../assets/chess.png')}
+          style = {styles.chess} />
 
         <TouchableHighlight
-           style={styles.infoButton}
-           onPress={() => this.props.navigation.navigate('UserInfo')}>
-           <Icon name="info"  size={30} color = '#696969'>
-          </Icon>
+        style={styles.rectangleButton}
+         onPress={() => this.props.navigation.navigate('HomePage')}>
+        <View style={styles.rectangle}>
+        </View>
         </TouchableHighlight>
+
 
         <TouchableHighlight
          style={styles.profileButton}
@@ -92,15 +91,6 @@ const styles = StyleSheet.create({
     left: 148,
     top: 69,
   },
-  profilePicture: {
-    width: 200,
-    height: 200,
-    borderRadius: 175.5,
-    borderColor: 'black',
-    left: 79,
-    top: 190,
-    borderWidth: 1
-  },
   profileButton: {
     position: 'absolute',
     width: 50,
@@ -118,12 +108,11 @@ const styles = StyleSheet.create({
   profileBioHeader: {
     position: 'absolute',
     width: 352,
-    height: 232,
     left: 12,
-    top: 404,
+    top: 200,
 
     fontFamily: 'Montserrat-Black',
-    fontSize: 25,
+    fontSize: 18,
     lineHeight: 35,
     textAlign: 'center'
   },
@@ -135,11 +124,20 @@ const styles = StyleSheet.create({
     top: 404,
 
     fontFamily: 'Montserrat-Bold',
-    fontSize: 18,
+    fontSize: 25,
     lineHeight: 35,
     textAlign: 'center'
   },
   rectangle: {
+    height: 493,
+    width: 357,
+    backgroundColor: '#EBB448',
+    opacity: 0.3,
+    position: 'absolute', 
+    top: 163,
+    left: 9
+  },
+  rectangleButton: {
     height: 493,
     width: 357,
     backgroundColor: '#EBB448',
@@ -186,11 +184,46 @@ const styles = StyleSheet.create({
     position: 'absolute',
     backgroundColor: '#ECECEC'
   },
-  infoButton: {
+  kayak: {
     position: 'absolute',
-    width: 30,
-    height: 30,
-    left: 300,
-    top: 405
+    width: 100,
+    height: 100,
+    left: 35,
+    top: 204,
+  },
+  rockClimb: {
+    position: 'absolute',
+    width: 100,
+    height: 100,
+    left: 240,
+    top: 204,
+  },
+  badminton: {
+    position: 'absolute',
+    width: 100,
+    height: 100,
+    left: 35,
+    top: 363,
+  },
+  bowling: {
+    position: 'absolute',
+    width: 100,
+    height: 100,
+    left: 240,
+    top: 363,
+  },
+  basketball: {
+    position: 'absolute',
+    width: 100,
+    height: 100,
+    left: 35,
+    top: 522,
+  },
+  chess: {
+    position: 'absolute',
+    width: 100,
+    height: 100,
+    left: 240,
+    top: 522,
   }
 });
