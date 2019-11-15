@@ -6,8 +6,7 @@ import Icon from 'react-native-vector-icons/dist/FontAwesome';
 export default class HomePage extends React.Component {
   render() {
     return (
-      <ScrollView
-        style={styles.container}>
+      <View style={styles.container}>
 
         <TouchableHighlight
          style={styles.logoButton}
@@ -16,12 +15,27 @@ export default class HomePage extends React.Component {
             style = {styles.logo} />
         </TouchableHighlight>
 
+
         <Text style = {styles.profileBioHeader}>
           Hobby(s): rock climbing (5), kayaking (4), basketball (1), tennis (2), mountain biking (2) {"\n"}
           About Me: Primarily looking to find some fellow rock climbers but open to other hobbies as well!  {"\n"} 
           Location: Atlanta, Georgia {"\n"}
           Fun Fact: I climbed Mt. Everest twice in one day {"\n"}
-          Spirit Animal: Mountain goat
+          Spirit Animal: Mountain goat'
+          BLAH BLAH
+          BLAH BLAH
+          BLAH BLAH
+          BLAH BLAH
+          BLAH BLAH
+          BLAH BLAH
+          BLAH BLAH
+          BLAH BLAH
+          BLAH BLAH
+          BLAH BLAH
+          BLAH BLAH
+          BLAH BLAH
+          BLAH BLAH
+          BLAH BLAH
         </Text>
 
         <TouchableHighlight
@@ -59,7 +73,7 @@ export default class HomePage extends React.Component {
          <Icon name="times-circle"  size={100} color = 'red' style = {styles.xButtonIcon}>
         </Icon>
         </TouchableHighlight>
-      </ScrollView>
+      </View>
   );
   }
 }
@@ -104,7 +118,8 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat-Black',
     fontSize: 18,
     lineHeight: 35,
-    textAlign: 'center'
+    textAlign: 'center',
+    overflow: 'scroll'
   },
   profileBio: {
     position: 'absolute',
