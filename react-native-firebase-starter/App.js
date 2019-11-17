@@ -12,6 +12,8 @@ import Profile from './screen/Profile'
 import Chat from './screen/Chat'
 import UserInfo from './screen/UserInfo'
 import HobbyPage from './screen/HobbyPage'
+import SignUpInfo from './screen/SignUpInfo'
+import ChangeInfo from './screen/ChangeInfo'
 
 // create our app's navigation stack
 const AppStack = createSwitchNavigator(
@@ -45,6 +47,12 @@ const AppStack = createSwitchNavigator(
 	},
 	HobbyPage: {
 		screen: HobbyPage
+	},
+	SignUpInfo: {
+		screen: SignUpInfo
+	},
+	ChangeInfo: {
+		screen: ChangeInfo
 	}
 });
 export default createAppContainer(

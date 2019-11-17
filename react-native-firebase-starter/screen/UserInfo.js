@@ -21,21 +21,7 @@ export default class HomePage extends React.Component {
           About Me: Primarily looking to find some fellow rock climbers but open to other hobbies as well!  {"\n"} 
           Location: Atlanta, Georgia {"\n"}
           Fun Fact: I climbed Mt. Everest twice in one day {"\n"}
-          Spirit Animal: Mountain goat'
-          BLAH BLAH
-          BLAH BLAH
-          BLAH BLAH
-          BLAH BLAH
-          BLAH BLAH
-          BLAH BLAH
-          BLAH BLAH
-          BLAH BLAH
-          BLAH BLAH
-          BLAH BLAH
-          BLAH BLAH
-          BLAH BLAH
-          BLAH BLAH
-          BLAH BLAH
+          Spirit Animal: Mountain goat
         </Text>
 
         <TouchableHighlight

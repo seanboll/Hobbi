@@ -10,7 +10,7 @@ export default class SignUp extends React.Component {
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
-      .then(user => this.props.navigation.navigate('Main'))
+      .then(user => this.props.navigation.navigate('SignUpInfo'))
       .catch(error => this.setState({ errorMessage: error.message }))
   }
 
@@ -27,7 +27,7 @@ export default class SignUp extends React.Component {
             {this.state.errorMessage}
           </Text>}
         <TextInput
-          placeholder="Email"
+          placeholder="   Email"
           autoCapitalize="none"
           style={styles.textInput}
           onChangeText={email => this.setState({ email })}
@@ -35,7 +35,7 @@ export default class SignUp extends React.Component {
         />
         <TextInput
           secureTextEntry
-          placeholder="Password"
+          placeholder="   Password"
           autoCapitalize="none"
           style={styles.textInput}
           onChangeText={password => this.setState({ password })}

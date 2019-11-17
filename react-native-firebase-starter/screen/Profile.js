@@ -18,7 +18,7 @@ export default class HomePage extends React.Component {
 
         <TouchableHighlight
          style={styles.settingButton}
-         onPress={() => this.props.navigation.navigate('Main')}>
+         onPress={() => this.props.navigation.navigate('ChangeInfo')}>
          <Icon name="cog"  size={30} color = 'gray' style = {styles.settingButtonIcon}>
         </Icon>
         </TouchableHighlight>
