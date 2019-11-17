@@ -17,6 +17,10 @@ export default class ChangeInfo extends React.Component {
       */
   }
 
+  cancel = () => {
+    this.props.navigation.navigate('Profile')
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -76,6 +80,7 @@ export default class ChangeInfo extends React.Component {
         />
 
         <Button title="Submit" onPress={this.handleSignUp} />
+        <Button title="Cancel" onPress={this.cancel} />
       </View>
     )
   }
