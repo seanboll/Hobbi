@@ -15,14 +15,16 @@ export default class HomePage extends React.Component {
             style = {styles.logo} />
         </TouchableHighlight>
 
-
+        <ScrollView>
         <Text style = {styles.profileBioHeader}>
           Hobby(s): rock climbing (5), kayaking (4), basketball (1), tennis (2), mountain biking (2) {"\n"}
           About Me: Primarily looking to find some fellow rock climbers but open to other hobbies as well!  {"\n"} 
           Location: Atlanta, Georgia {"\n"}
           Fun Fact: I climbed Mt. Everest twice in one day {"\n"}
-          Spirit Animal: Mountain goat
+          Spirit Animal: Mountain goat'
+
         </Text>
+        </ScrollView>
 
         <TouchableHighlight
         style={styles.rectangleButton}
@@ -104,8 +106,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat-Black',
     fontSize: 18,
     lineHeight: 35,
-    textAlign: 'center',
-    overflow: 'scroll'
+    textAlign: 'center'
   },
   profileBio: {
     position: 'absolute',

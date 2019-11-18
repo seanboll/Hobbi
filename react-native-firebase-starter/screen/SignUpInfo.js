@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, TextInput, View, Button } from 'react-native'
+import { StyleSheet, Text, TextInput, View, Button, TouchableOpacity } from 'react-native'
 import firebase from 'react-native-firebase'
 
 export default class SignUpInfo extends React.Component {
@@ -20,10 +20,14 @@ export default class SignUpInfo extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+        <View style={styles.rectangle}>
+        </View>
         <View style={styles.getStartedContainer}>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('SelectHobbies')}>
           <Text style={styles.getStartedText}>
             Hobbi
           </Text>
+        </TouchableOpacity>
         </View>
         {this.state.errorMessage &&
           <Text style={{ color: 'red' }}>
@@ -75,7 +79,8 @@ export default class SignUpInfo extends React.Component {
           numberOfLines={5}
         />
 
-        <Button title="Submit" onPress={this.handleSignUp} />
+        <Button style = {styles.buttonStyle} title="Submit" onPress={this.handleSignUp} />
+
       </View>
     )
   }
@@ -87,6 +92,21 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#DFB662'
+  },
+  buttonStyle: {
+    top: 630
+  },
+  rectangle: {
+    position: 'absolute',
+    width: 208,
+    height: 60,
+    left: 85,
+    top: 215,
+
+    backgroundColor: '#DFB662',
+    borderWidth: 3, //solid #FFFBFB,
+    borderColor: "white",
+    borderRadius: 34.5
   },
   textInput: {
     height: 40,

@@ -18,8 +18,8 @@ export default class HomePage extends React.Component {
 
         <TouchableHighlight
          style={styles.settingButton}
-         onPress={() => this.props.navigation.navigate('ChangeInfo')}>
-         <Icon name="cog"  size={30} color = 'gray' style = {styles.settingButtonIcon}>
+         onPress={() => this.props.navigation.navigate('Main')}>
+         <Icon name="sign-out"  size={30} color = 'gray' style = {styles.settingButtonIcon}>
         </Icon>
         </TouchableHighlight>
 
@@ -27,6 +27,13 @@ export default class HomePage extends React.Component {
          style={styles.arrowButton}
          onPress={() => this.props.navigation.navigate('HomePage')}>
          <Icon name="chevron-right"  size={30} color = 'gray' style = {styles.arrowButtonIcon}>
+        </Icon>
+        </TouchableHighlight>
+
+        <TouchableHighlight
+         style={styles.editInfo}
+         onPress={() => this.props.navigation.navigate('ChangeInfo')}>
+         <Icon name="edit"  size={30} color = 'gray' style = {styles.editInfoIcon}>
         </Icon>
         </TouchableHighlight>
       </ScrollView>
@@ -54,6 +61,21 @@ const styles = StyleSheet.create({
     height: 50,
     left: 15,
     top: 30,
+    backgroundColor: '#ECECEC'
+  },
+  editInfo: {
+    position: 'absolute',
+    width: 50,
+    height: 50,
+    left: 88,
+    top: 481,
+    backgroundColor: '#ECECEC'
+  },
+  editInfoIcon: {
+    position: 'absolute',
+    transform: [{ rotate: '40deg' }],
+    left: 15,
+    top: 15,
     backgroundColor: '#ECECEC'
   },
   settingButtonIcon: {

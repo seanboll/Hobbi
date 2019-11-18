@@ -3,10 +3,10 @@ import { StyleSheet, Text, TextInput, View, Button } from 'react-native'
 import firebase from 'react-native-firebase'
 
 export default class SignUp extends React.Component {
-  state = { email: '', password: '', errorMessage: null }
+  state = { email: '', password: '', verifcation: '', errorMessage: null }
 
   handleSignUp = () => {
-    const { email, password } = this.state
+    const { email, password} = this.state
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
@@ -40,6 +40,13 @@ export default class SignUp extends React.Component {
           style={styles.textInput}
           onChangeText={password => this.setState({ password })}
           value={this.state.password}
+        />
+        <TextInput
+          secureTextEntry
+          placeholder="   Re-enter Password"
+          autoCapitalize="none"
+          style={styles.textInput}
+          onChangeText={verifcation => this.setState({ verifcation })}
         />
         <Button title="Sign Up" onPress={this.handleSignUp} />
         <Button
