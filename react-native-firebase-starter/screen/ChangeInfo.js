@@ -44,7 +44,7 @@ export default class ChangeInfo extends React.Component {
         <View style={styles.getStartedContainer}>
         <TouchableOpacity onPress={() => this.props.navigation.navigate('SelectHobbies')}>
           <Text style={styles.getStartedText}>
-            Hobbi
+            My Hobbi(s)
           </Text>
         </TouchableOpacity>
         </View>
@@ -54,7 +54,6 @@ export default class ChangeInfo extends React.Component {
           </Text>}
 
         <TextInput
-          secureTextEntry
           placeholder="   Name"
           autoCapitalize="none"
           style={styles.textInput}
@@ -111,7 +110,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#DFB662'
+    backgroundColor: 'white'
   },
   buttonStyle: {
     top: 630
@@ -133,9 +132,9 @@ const styles = StyleSheet.create({
     left: 85,
     top: 195,
 
-    backgroundColor: '#DFB662',
+    backgroundColor: 'white',
     borderWidth: 3, //solid #FFFBFB,
-    borderColor: "white",
+    borderColor: '#DFB662',
     borderRadius: 34.5
   },
   textInput: {
@@ -153,9 +152,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   getStartedText: {
-    fontFamily: "MontserratAlternates-ExtraBold",
-    fontSize: 50,
-    color: 'white',
+    fontFamily: "Montserrat-ExtraBold",
+    fontSize: 25,
+    color: '#DFB662',
     textAlign: 'center',
   }
 })

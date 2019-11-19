@@ -19,8 +19,8 @@ export default class HomePage extends React.Component {
         <TouchableHighlight
          style={styles.settingButton}
          onPress={() => this.props.navigation.navigate('Main')}>
-         <Icon name="sign-out"  size={30} color = 'gray' style = {styles.settingButtonIcon}>
-        </Icon>
+         <Image source = {require('../assets/logout.png')}
+          style = {styles.settingButtonIcon} />
         </TouchableHighlight>
 
         <TouchableHighlight
@@ -73,13 +73,14 @@ const styles = StyleSheet.create({
   },
   editInfoIcon: {
     position: 'absolute',
-    transform: [{ rotate: '40deg' }],
     left: 15,
     top: 15,
     backgroundColor: '#ECECEC'
   },
   settingButtonIcon: {
     position: 'absolute',
+    width: 30,
+    height: 30,
     left: 15,
     top: 15,
     backgroundColor: '#ECECEC'
