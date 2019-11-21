@@ -7,13 +7,12 @@ export default class SignUp extends React.Component {
 
   handleSignUp = () => {
     const { email, password} = this.state
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
+
+      firebase.auth().createUserWithEmailAndPassword(email, password)
       .then(user => this.props.navigation.navigate('SignUpInfo'))
       .catch(error => this.setState({ errorMessage: error.message }))
   }
-
+  
   render() {
     return (
       <View style={styles.container}>
@@ -71,7 +70,8 @@ const styles = StyleSheet.create({
     borderColor: 'gray',
     borderWidth: 1,
     marginTop: 8,
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    color: 'black'
   },
   getStartedContainer: {
     alignItems: 'center',

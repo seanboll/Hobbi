@@ -21,6 +21,8 @@
 		2DCD954D1E0B4F2C00145EB5 /* HobbiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* HobbiTests.m */; };
 		573023292354300F00F7BFBF /* MontserratAlternates-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 573023282354300F00F7BFBF /* MontserratAlternates-ExtraBold.ttf */; };
 		5730232D2354387400F7BFBF /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5730232C2354387400F7BFBF /* Montserrat-ExtraBold.ttf */; };
+		578D769B23864AD000CE4AA6 /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 578D769A23864AD000CE4AA6 /* Montserrat-Light.ttf */; };
+		578D769D23864B1D00CE4AA6 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 578D769C23864B1D00CE4AA6 /* Montserrat-Regular.ttf */; };
 		57B6B1C5235D88490011BEBD /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57B6B1C4235D88490011BEBD /* Montserrat-Bold.ttf */; };
 		57B6B1C7235D94810011BEBD /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57B6B1C6235D94810011BEBD /* Montserrat-Black.ttf */; };
 		57B6B1C9235E3A930011BEBD /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57B6B1C8235E3A930011BEBD /* FontAwesome.ttf */; };
@@ -71,6 +73,9 @@
 		573023262354111400F7BFBF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		573023282354300F00F7BFBF /* MontserratAlternates-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MontserratAlternates-ExtraBold.ttf"; path = "../assets/fonts/MontserratAlternates-ExtraBold.ttf"; sourceTree = "<group>"; };
 		5730232C2354387400F7BFBF /* Montserrat-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-ExtraBold.ttf"; path = "../assets/fonts/Montserrat-ExtraBold.ttf"; sourceTree = "<group>"; };
+		578D769923864A6C00CE4AA6 /* Montserrat-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Light.ttf"; path = "../assets/fonts/Montserrat-Light.ttf"; sourceTree = "<group>"; };
+		578D769A23864AD000CE4AA6 /* Montserrat-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Light.ttf"; path = "../assets/fonts/Montserrat-Light.ttf"; sourceTree = "<group>"; };
+		578D769C23864B1D00CE4AA6 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Regular.ttf"; path = "../assets/fonts/Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		57B6B1C4235D88490011BEBD /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Bold.ttf"; path = "../assets/fonts/Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		57B6B1C6235D94810011BEBD /* Montserrat-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Black.ttf"; path = "../assets/fonts/Montserrat-Black.ttf"; sourceTree = "<group>"; };
 		57B6B1C8235E3A930011BEBD /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.ttf; path = ../assets/fonts/FontAwesome.ttf; sourceTree = "<group>"; };
@@ -204,6 +209,9 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				578D769C23864B1D00CE4AA6 /* Montserrat-Regular.ttf */,
+				578D769923864A6C00CE4AA6 /* Montserrat-Light.ttf */,
+				578D769A23864AD000CE4AA6 /* Montserrat-Light.ttf */,
 				57B6B1C8235E3A930011BEBD /* FontAwesome.ttf */,
 				57B6B1C6235D94810011BEBD /* Montserrat-Black.ttf */,
 				57B6B1C4235D88490011BEBD /* Montserrat-Bold.ttf */,
@@ -382,6 +390,8 @@
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				573023292354300F00F7BFBF /* MontserratAlternates-ExtraBold.ttf in Resources */,
 				27760E91229B6FDF00F5F127 /* GoogleService-Info.plist in Resources */,
+				578D769D23864B1D00CE4AA6 /* Montserrat-Regular.ttf in Resources */,
+				578D769B23864AD000CE4AA6 /* Montserrat-Light.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

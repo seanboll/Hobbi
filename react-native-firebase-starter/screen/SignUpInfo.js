@@ -5,16 +5,21 @@ import firebase from 'react-native-firebase'
 export default class SignUpInfo extends React.Component {
   state = { email: '', password: '', errorMessage: null, name: '', age: '', location: '', funFact: '', spiritAnimal: '', aboutMe: '', hobbies: ''}
 
+  writeUserData = () => {
+        const uid = firebase.auth().currentUser.uid;
+        const { errorMessage, name, age, location, funFact, spiritAnimal, aboutMe} = this.state
+
+        firebase.database().ref(`Users/${uid}/info`).set(this.state);
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        // only write when it's different with the new state
+        this.writeUserData();
+    }
+
+
   handleSignUp = () => {
-    const { email, password, name, age, location, funFact, spiritAnimal, aboutMe, hobbies} = this.state
     this.props.navigation.navigate('HomePage')
-    /*
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then(user => this.props.navigation.navigate('HomePage'))
-      .catch(error => this.setState({ errorMessage: error.message }))
-      */
   }
 
   render() {
@@ -23,7 +28,7 @@ export default class SignUpInfo extends React.Component {
         <View style={styles.rectangle}>
         </View>
         <View style={styles.getStartedContainer}>
-        <TouchableOpacity onPress={() => this.props.navigation.navigate('SelectHobbies')}>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('SelectHobbiesSignUp')}>
           <Text style={styles.getStartedText}>
             Hobbi
           </Text>
@@ -34,7 +39,6 @@ export default class SignUpInfo extends React.Component {
             {this.state.errorMessage}
           </Text>}
         <TextInput
-          secureTextEntry
           placeholder="   Name"
           autoCapitalize="none"
           style={styles.textInput}
@@ -114,7 +118,8 @@ const styles = StyleSheet.create({
     borderColor: 'gray',
     borderWidth: 1,
     marginTop: 8,
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    color: 'black'
   },
   getStartedContainer: {
     alignItems: 'center',

@@ -19,17 +19,17 @@ export default class Main extends React.Component {
 render() {
     const { currentUser } = this.state
     return (
-      <ScrollView
+      <View
         style={styles.container}>
         <Image source = {require('../assets/Logo_main.png')}
           style = {styles.logo} />
           <Text style={styles.getStartedText}>Hobbi</Text>
           <View style={styles.rectangle}>
           </View>
-          <TouchableOpacity onPress={() => this.props.navigation.navigate('Login')}>
+          <TouchableOpacity style = {styles.touch} onPress={() => this.props.navigation.navigate('Login')}>
               <Text style={styles.loginText}>Login with Email</Text>
           </TouchableOpacity>
-      </ScrollView>
+      </View>
   );
   }
 }
@@ -37,9 +37,8 @@ render() {
 const styles = StyleSheet.create({
   container: {
     position: 'relative',
-    width: 375,
-    height: 812,
-    backgroundColor: '#DFB662'
+    backgroundColor: '#DFB662',
+    alignItems: 'center',
   },
   circleGradient: {
     backgroundColor: "white",
@@ -63,7 +62,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: 200,
     height: 49,
-    left: 87,
     top: 537,
 
     backgroundColor: '#EBB448',
@@ -80,8 +78,11 @@ const styles = StyleSheet.create({
     color: '#FFFEFE',
     width: 283,
     height: 69,
-    left: 46,
-    top: 549
+    paddingVertical: 549
+  },
+  touch: {
+    alignItems: 'center',
+    textAlign: 'center',
   },
   getStartedText: {
     fontFamily: "MontserratAlternates-ExtraBold",

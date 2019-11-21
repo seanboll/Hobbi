@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, Text, Image, Button } from 'react-native'
 import SelectMultiple from 'react-native-select-multiple'
+import firebase from 'react-native-firebase'
 
 const hobbies = [' ', 'Badminton', 'Basketball', 'Bowling', 'Chess', 'Football', 'Fishing', 'Kayaking', 'Rock Climbing', 'Skiing', 'Snowboarding', 'Soccer', 'Tennis']
 
@@ -17,14 +18,31 @@ const renderLabel = (label, style) => {
 export default class SelectHobbies extends React.Component {
   state = { selectedHobbies: [] }
 
+  writeUserData = () => {
+
+    const uid = firebase.auth().currentUser.uid;
+    const { selectedHobbies } = this.state
+
+    firebase.database().ref(`Users/${uid}/hobby`).set(this.state);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    // check on previous state, how to keep the previous state???
+    // only write when it's different with the new state
+    this.writeUserData();
+  }
+
   handleSignUp = () => {
-    state = this.state
+    var state = this.state
     this.props.navigation.navigate('SignUpInfo')
   }
+
   onSelectionsChange = (selectedHobbies) => {
     // selectedHobbies is array of { label, value }
     this.setState({ selectedHobbies })
+    // this.writeUserData();
   }
+
 
   render () {
     return (

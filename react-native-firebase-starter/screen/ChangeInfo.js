@@ -7,31 +7,49 @@ import { Switch } from 'react-native-switch'
 
 
 export default class ChangeInfo extends React.Component {
-  state = { email: '', password: '', errorMessage: null, name: '', age: '', location: '', funFact: '', spiritAnimal: '', aboutMe: ''}
+  state =  {  name: '', age: 0, location: '', aboutMe: '', funFact: ''}
 
-  // onSelectedItemsChange = selectedHobbies => {
-  //   this.setState({ selectedHobbies });
-  //   //Set Selected Items
-  // }
+  componentDidMount() {
 
-  handleSignUp = () => {
-    const { email, password, name, age, location, funFact, spiritAnimal, aboutMe} = this.state
-    this.props.navigation.navigate('Profile')
-    /*
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then(user => this.props.navigation.navigate('HomePage'))
-      .catch(error => this.setState({ errorMessage: error.message }))
-      */
+    const uid = firebase.auth().currentUser.uid;
+    let itemsRef = firebase.database().ref(`/Users/${uid}/info`);
+
+    itemsRef.on('value', snapshot => {
+      let data = snapshot.val();
+      let userName = data.name;
+      let userAge = data.age;
+      let userLocation = data.location;
+      let userMe = data.aboutMe;
+      let userFun = data.funFact;
+      let userAnimal = data.spiritAnimal;
+      // let items = Object.values(data);
+      this.setState({ name:userName, age:userAge, location:userLocation, aboutMe:userMe, funFact:userFun, spiritAnimal:userAnimal  });
+    })
   }
 
-  cancel = () => {
+
+  writeUserData = () => {
+
+    const uid = firebase.auth().currentUser.uid;
+    const { errorMessage, name, age, location, funFact, spiritAnimal, aboutMe} = this.state
+
+    firebase.database().ref(`Users/${uid}/info`).set(this.state);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    // check on previous state, how to keep the previous state???
+    // only write when it's different with the new state
+    this.writeUserData();
+  }
+
+  // Go to profile page, and reset matching, place hold
+  handleSubmit = () => {
     this.props.navigation.navigate('Profile')
   }
 
   hobbySelect = () => {
-    this.props.navigation.navigate('Chat')
+    this.writeUserData();
+    this.props.navigation.navigate('SelectHobbies')
   }
 
 
@@ -42,7 +60,7 @@ export default class ChangeInfo extends React.Component {
         <View style={styles.rectangle}>
         </View>
         <View style={styles.getStartedContainer}>
-        <TouchableOpacity onPress={() => this.props.navigation.navigate('SelectHobbies')}>
+        <TouchableOpacity onPress={() => this.hobbySelect}>
           <Text style={styles.getStartedText}>
             My Hobbi(s)
           </Text>
@@ -54,42 +72,42 @@ export default class ChangeInfo extends React.Component {
           </Text>}
 
         <TextInput
-          placeholder="   Name"
+          placeholder="   {userName}"
           autoCapitalize="none"
           style={styles.textInput}
           onChangeText={name => this.setState({ name })}
           value={this.state.name}
         />
         <TextInput
-          placeholder="   Age"
+          placeholder="   {userAge}"
           autoCapitalize="none"
           style={styles.textInput}
           onChangeText={age => this.setState({ age })}
-          value={this.state.age}
+          value={String(this.state.age)}
         />
         <TextInput
-          placeholder="   Location"
+          placeholder="   {userLocation}"
           autoCapitalize="none"
           style={styles.textInput}
           onChangeText={location => this.setState({ location })}
           value={this.state.location}
         />
         <TextInput
-          placeholder="   Fun Fact"
+          placeholder="   {userFun}"
           autoCapitalize="none"
           style={styles.textInput}
           onChangeText={funFact => this.setState({ funFact })}
           value={this.state.funFact}
         />
         <TextInput
-          placeholder="   Spirit Animal"
+          placeholder="   {userAnimal}"
           autoCapitalize="none"
           style={styles.textInput}
           onChangeText={spiritAnimal => this.setState({ spiritAnimal })}
           value={this.state.spiritAnimal}
         />
         <TextInput
-          placeholder="   About Me"
+          placeholder="   {userMe}"
           autoCapitalize="none"
           style={styles.textInput}
           onChangeText={aboutMe => this.setState({ aboutMe })}
@@ -98,7 +116,7 @@ export default class ChangeInfo extends React.Component {
           numberOfLines={5}
         />
 
-        <Button style = {styles.buttonStyle} title="Submit" onPress={this.handleSignUp} />
+        <Button style = {styles.buttonStyle} title="Submit" onPress={this.handleSubmit} />
         <Button style = {styles.buttonStyle} title="Cancel" onPress={this.cancel} />
       </View>
     )
@@ -143,6 +161,7 @@ const styles = StyleSheet.create({
     borderColor: 'gray',
     borderWidth: 1,
     marginTop: 8,
+    color: 'black',
     backgroundColor: 'white'
   },
   switch: {

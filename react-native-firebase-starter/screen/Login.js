@@ -8,9 +8,7 @@ export default class Login extends React.Component {
 
   handleLogin = () => {
     const { email, password } = this.state
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
+       firebase.auth().signInWithEmailAndPassword(email, password)
       .then(() => this.props.navigation.navigate('HomePage'))
       .catch(error => this.setState({ errorMessage: error.message }))
   }
@@ -65,7 +63,8 @@ const styles = StyleSheet.create({
     borderColor: 'gray',
     borderWidth: 1,
     marginTop: 8,
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    color: 'black'
   },
   getStartedContainer: {
     alignItems: 'center',
