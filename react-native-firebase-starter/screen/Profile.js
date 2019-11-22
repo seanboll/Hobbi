@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/dist/FontAwesome';
 // import { f, auth, database, storage } from '../config/config';
 
 export default class HomePage extends React.Component {
-  state =  {  name: '', age: 0, location: '', aboutMe: '', funFact: '', spiritAnimal: ''}
+  state =  {  name: '', age: 0, location: '', aboutMe: '', funFact: '', spiritAnimal: '', selectedHobbies: []}
 
   componentDidMount() {
 
@@ -18,6 +18,7 @@ export default class HomePage extends React.Component {
     let userMe = "";
     let userFun = "";
     let userAnimal = "";
+    let userHobbies = [];
 
     itemsRef.on('value', snapshot => {
       let data = snapshot.val();
@@ -39,8 +40,11 @@ export default class HomePage extends React.Component {
       if (snapshot.hasChild("spiritAnimal")) {
         userAnimal = data.spiritAnimal;
       } 
+      if (snapshot.hasChild("selectedHobbies")) {
+        userHobbies = data.selectedHobbies;
+      } 
       // let items = Object.values(data);
-      this.setState({ name:userName, age:userAge, location:userLocation, aboutMe:userMe, funFact:userFun, spiritAnimal:userAnimal  });
+      this.setState({ name:userName, age:userAge, location:userLocation, aboutMe:userMe, funFact:userFun, spiritAnimal:userAnimal, selectedHobbies: userHobbies  });
     })
   }
 

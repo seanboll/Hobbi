@@ -60,6 +60,7 @@ export default class ChangeInfo extends React.Component {
     let userFun = "";
     let userAnimal = "";
     let userHobbies = [];
+
     let nameHold = "Name"
     let ageHold = "Age"
     let locationHold = "Location"
@@ -205,8 +206,8 @@ export default class ChangeInfo extends React.Component {
             uniqueKey='id'
             onSelectedItemsChange={this.onSelectedItemsChange}
             selectedItems={this.state.selectedHobbies}
-            selectText='Pick Items'
-            searchInputPlaceholderText='Search Items...'
+            selectText='Pick Hobbies'
+            searchInputPlaceholderText='Search Hobbies...'
             onChangeInput={(text) => console.warn(text)}
             tagRemoveIconColor='gray'
             tagBorderColor='gray'

@@ -23,6 +23,7 @@
   "dependencies": {
     "@mdi/font": "^4.5.95",
     "expo": "^35.0.1",
+    "firebase-admin": "^8.8.0",
     "jetifier": "^1.6.4",
     "native": "^0.3.3",
     "prop-types": "^15.7.2",
@@ -39,7 +40,8 @@
     "react-native-select-multiple": "^2.1.0",
     "react-native-switch": "^1.5.0",
     "react-native-vector-icons": "^6.6.0",
-    "react-navigation": "^4.0.10"
+    "react-navigation": "^4.0.10",
+    "rn-nodeify": "^10.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.7.2",

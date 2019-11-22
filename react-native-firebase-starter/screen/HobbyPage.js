@@ -4,6 +4,57 @@ import firebase from 'react-native-firebase'
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
 export default class HobbyPage extends React.Component {
+  state =  {  name: '', age: 0, location: '', aboutMe: '', funFact: '', animal: '', selectedHobbies: []}
+
+  componentDidMount() {
+
+    //const uid = firebase.auth().currentUser.uid;
+    //let itemsRefInfo = firebase.database().ref(`/Users/${uid}/info`);
+    let usersRef = firebase.database().ref('/Users/')
+    let itemsRef = firebase.database().ref(`/Users/g0zbdloUcVXMAFISgYYE1ptWwKC3/info`);
+
+    let userName = "";
+    let userAge = "";
+    let userLocation = "";
+    let userMe = "";
+    let userFun = "";
+    let userAnimal = "";
+    let userHobbies = [];
+
+    usersRef.on('value', snapshot =>{
+      for (var key in snapshot.val()) {
+        itemsRef = firebase.database().ref(`/Users/{snapshot.val()[key]}/info`);
+      }
+    })
+
+    itemsRef.on('value', snapshot => {
+      let data = snapshot.val();
+      if (snapshot.hasChild("name")) {
+        userName = data.name;
+      }
+      if (snapshot.hasChild("age")) {
+        userAge = data.age;
+      } 
+      if (snapshot.hasChild("location")) {
+        userLocation = data.location;
+      } 
+      if (snapshot.hasChild("aboutMe")) {
+        userMe = data.aboutMe;
+      } 
+      if (snapshot.hasChild("funFact")) {
+        userFun = data.funFact;
+      } 
+      if (snapshot.hasChild("spiritAnimal")) {
+        userAnimal = data.spiritAnimal;
+      }
+      if (snapshot.hasChild("selectedHobbies")) {
+        userHobbies = data.selectedHobbies;
+      } 
+      // let items = Object.values(data);
+      this.setState({ name:userName, age:userAge, location:userLocation, aboutMe:userMe, funFact:userFun, spiritAnimal:userAnimal, selectedHobbies: userHobbies  });
+    })
+  }
+  
   render() {
     return (
       <ScrollView
