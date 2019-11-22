@@ -74,12 +74,14 @@ export default class HomePage extends React.Component {
         </Icon>
         </TouchableHighlight>
 
+        <View style={styles.editCenter}>
         <TouchableHighlight
          style={styles.editInfo}
          onPress={() => this.props.navigation.navigate('ChangeInfo')}>
          <Icon name="edit"  size={30} color = 'gray' style = {styles.editInfoIcon}>
         </Icon>
         </TouchableHighlight>
+        </View>
       </ScrollView>
   );
   }
@@ -111,9 +113,12 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: 50,
     height: 50,
-    left: 88,
-    top: 580,
+    top: 550,
     backgroundColor: '#ECECEC'
+  },
+  editCenter: {
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   editInfoIcon: {
     position: 'absolute',

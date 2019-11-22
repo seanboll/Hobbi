@@ -1,8 +1,9 @@
 import React from 'react'
-import { StyleSheet, Text, TextInput, View, Button,  TouchableOpacity} from 'react-native'
+import { StyleSheet, Text, TextInput, View, Button,  TouchableOpacity, TouchableHighlight} from 'react-native'
 import firebase from 'react-native-firebase'
 import { Switch } from 'react-native-switch'
 import MultiSelect from 'react-native-multiple-select';
+import Icon from 'react-native-vector-icons/dist/FontAwesome';
 // import CustomMultiPicker from "react-native-multiple-select-list"
 //import MultipleChoice from 'react-native-multiple-choice'
 
@@ -45,7 +46,7 @@ const hobbies = [{
 }]
 
 export default class ChangeInfo extends React.Component {
-  state =  {  name: '', age: 0, location: '', aboutMe: '', funFact: '', spiritAnimal: '', selectedHobbies: []}
+  state =  {  name: '', age: 0, location: '', aboutMe: '', funFact: '', spiritAnimal: '', selectedHobbies: [], show: true}
 
   componentDidMount() {
 
@@ -96,7 +97,7 @@ export default class ChangeInfo extends React.Component {
         userHobbies = data.selectedHobbies;
       } 
       // let items = Object.values(data);
-      this.setState({ name:userName, age:userAge, location:userLocation, aboutMe:userMe, funFact:userFun, spiritAnimal:userAnimal, selectedHobbies: userHobbies  });
+      this.setState({ name:userName, age:userAge, location:userLocation, aboutMe:userMe, funFact:userFun, spiritAnimal:userAnimal, selectedHobbies: userHobbies, show:true  });
     })
   }
 
@@ -124,16 +125,29 @@ export default class ChangeInfo extends React.Component {
     this.setState({ selectedHobbies });
   }
 
+  ShowHideComponent = () => {
+    if (this.state.show == true) {
+      this.setState({ show: false });
+    } else {
+      this.setState({ show: true });
+    }
+  };
+
+
 
 
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.rectangle}>
-        </View>
+        <TouchableHighlight
+           style={styles.chatButton}
+           onPress={() => this.props.navigation.navigate('Profile')}>
+           <Icon name="chevron-right"  size={30} color = 'gray' style = {styles.chatButtonIcon}>
+          </Icon>
+          </TouchableHighlight>
         <View style={styles.getStartedContainer}>
           <Text style={styles.getStartedText}>
-            My Hobbi(s)
+            Hobbi
           </Text>
         </View>
         {this.state.errorMessage &&
@@ -203,13 +217,12 @@ export default class ChangeInfo extends React.Component {
             itemTextColor='#000'
             displayKey='name'
             searchInputStyle={{ color: 'gray' }}
-            submitButtonColor='gray'
-            submitButtonText='Submit'
             removeSelected
           />
-          <Button title="Submit" onPress={this.handleSubmit} />
         </View>
       </View>
+      
+
     )
   }
 }
@@ -219,11 +232,19 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white'
+    backgroundColor: '#ECECEC'
+  },
+  container2: {
+    flex: 1,
+    backgroundColor: '#ECECEC'
   },
   multiSelectContainer: {
     height: 40,
-    width: '89%'
+    width: '89%',
+    marginTop: 10
+  },
+  button: {
+    marginTop: 20
   },
   loginText: {
     position: 'absolute',
@@ -236,12 +257,8 @@ const styles = StyleSheet.create({
     color: 'white'
   },
   rectangle: {
-    position: 'absolute',
-    width: 208,
-    height: 60,
-    left: 85,
-    top: 195,
-
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: 'white',
     borderWidth: 3, //solid #FFFBFB,
     borderColor: '#DFB662',
@@ -267,5 +284,18 @@ const styles = StyleSheet.create({
     fontSize: 25,
     color: '#DFB662',
     textAlign: 'center',
+  },
+  chatButton: {
+    position: 'absolute',
+    width: 50,
+    height: 50,
+    left: 312,
+    top: 30,
+    backgroundColor: '#ECECEC'
+  },
+  chatButtonIcon: {
+    backgroundColor: '#ECECEC',
+    left: 15,
+    top: 15,
   }
 })

@@ -1,8 +1,9 @@
 import React from 'react'
-import { StyleSheet, Text, TextInput, View, Button, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, TextInput, View, Button,  TouchableOpacity, TouchableHighlight} from 'react-native'
 import firebase from 'react-native-firebase'
-import MultiSelect from 'react-native-multiple-select';
 import { Switch } from 'react-native-switch'
+import MultiSelect from 'react-native-multiple-select';
+import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
 const hobbies = [{
   id: 'Badminton',
@@ -109,8 +110,12 @@ export default class SignUpInfo extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.rectangle}>
-        </View>
+        <TouchableHighlight
+         style={styles.chatButton}
+         onPress={() => this.props.navigation.navigate('HomePage')}>
+         <Icon name="chevron-right"  size={30} color = 'gray' style = {styles.chatButtonIcon}>
+        </Icon>
+        </TouchableHighlight>
         <View style={styles.getStartedContainer}>
           <Text style={styles.getStartedText}>
             Hobbi
@@ -186,7 +191,6 @@ export default class SignUpInfo extends React.Component {
             submitButtonText='Submit'
             removeSelected
           />
-          <Button title="Submit" onPress={this.handleSignUp} />
         </View>
 
       </View>
@@ -206,8 +210,8 @@ const styles = StyleSheet.create({
     width: '90%',
     marginTop: 10
   },
-  buttonStyle: {
-    top: 630
+  button: {
+    marginTop: 20
   },
   rectangle: {
     position: 'absolute',
@@ -238,5 +242,18 @@ const styles = StyleSheet.create({
     fontSize: 50,
     color: 'white',
     textAlign: 'center',
+  },
+  chatButton: {
+    position: 'absolute',
+    width: 50,
+    height: 50,
+    left: 312,
+    top: 30,
+    backgroundColor: '#DFB662'
+  },
+  chatButtonIcon: {
+    backgroundColor: '#DFB662',
+    left: 15,
+    top: 15,
   }
 })
