@@ -5,22 +5,42 @@ import Icon from 'react-native-vector-icons/dist/FontAwesome';
 // import { f, auth, database, storage } from '../config/config';
 
 export default class HomePage extends React.Component {
-  state =  {  name: '', age: 0, location: '', aboutMe: '', funFact: ''}
+  state =  {  name: '', age: 0, location: '', aboutMe: '', funFact: '', spiritAnimal: ''}
 
   componentDidMount() {
 
     const uid = firebase.auth().currentUser.uid;
     let itemsRef = firebase.database().ref(`/Users/${uid}/info`);
 
+    let userName = "";
+    let userAge = "";
+    let userLocation = "";
+    let userMe = "";
+    let userFun = "";
+    let userAnimal = "";
+
     itemsRef.on('value', snapshot => {
       let data = snapshot.val();
-      let userName = data.name;
-      let userAge = data.age;
-      let userLocation = data.location;
-      let userMe = data.aboutMe;
-      let userFun = data.funFact;
+      if (snapshot.hasChild("name")) {
+        userName = data.name;
+      }
+      if (snapshot.hasChild("age")) {
+        userAge = data.age;
+      } 
+      if (snapshot.hasChild("location")) {
+        userLocation = data.location;
+      } 
+      if (snapshot.hasChild("aboutMe")) {
+        userMe = data.aboutMe;
+      } 
+      if (snapshot.hasChild("funFact")) {
+        userFun = data.funFact;
+      } 
+      if (snapshot.hasChild("spiritAnimal")) {
+        userAnimal = data.spiritAnimal;
+      } 
       // let items = Object.values(data);
-      this.setState({ name:userName, age:userAge, location:userLocation, aboutMe:userMe, funFact:userFun  });
+      this.setState({ name:userName, age:userAge, location:userLocation, aboutMe:userMe, funFact:userFun, spiritAnimal:userAnimal  });
     })
   }
 

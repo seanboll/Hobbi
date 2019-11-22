@@ -1,66 +1,89 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, Text, Image, Button } from 'react-native'
-import SelectMultiple from 'react-native-select-multiple'
+//import SelectMultiple from 'react-native-select-multiple'
 import firebase from 'react-native-firebase'
+import MultiSelect from 'react-native-multiple-select';
 
-const hobbies = [' ', 'Badminton', 'Basketball', 'Bowling', 'Chess', 'Football', 'Fishing', 'Kayaking', 'Rock Climbing', 'Skiing', 'Snowboarding', 'Soccer', 'Tennis']
+const hobbies = ['Badminton', 'Basketball', 'Bowling', 'Chess', 'Football', 'Fishing', 'Kayaking', 'Rock Climbing', 'Skiing', 'Snowboarding', 'Soccer', 'Tennis']
 
-const renderLabel = (label, style) => {
-  return (
-    <View style={{flexDirection: 'row', alignItems: 'center'}}>
-      <View style={{marginLeft: 10}}>
-        <Text style={style}>{label}</Text>
-      </View>
-    </View>
-  )
-}
+const items = [{
+  id: '92iijs7yta',
+  name: 'Ondo'
+}, {
+  id: 'a0s0a8ssbsd',
+  name: 'Ogun'
+}, {
+  id: '16hbajsabsd',
+  name: 'Calabar'
+}, {
+  id: 'nahs75a5sg',
+  name: 'Lagos'
+}, {
+  id: '667atsas',
+  name: 'Maiduguri'
+}, {
+  id: 'hsyasajs',
+  name: 'Anambra'
+}, {
+  id: 'djsjudksjd',
+  name: 'Benue'
+}, {
+  id: 'sdhyaysdj',
+  name: 'Kaduna'
+}, {
+  id: 'suudydjsjd',
+  name: 'Abuja'
+}]
 
-
-export default class SelectHobbies extends React.Component {
-  state = { selectedHobbies: [] }
-
-  writeUserData = () => {
-
-    const uid = firebase.auth().currentUser.uid;
-    const { selectedHobbies} = this.state
-
-    firebase.database().ref(`Users/${uid}/hobby`).set(this.state);
+export default class App extends Component {
+  state = {
+    selectedItems: []
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    // check on previous state, how to keep the previous state???
-    // only write when it's different with the new state
-    this.writeUserData();
-  }
-
-  handleSignUp = () => {
-    var state = this.state
-    this.props.navigation.navigate('ChangeInfo')
-  }
-
-  onSelectionsChange = (selectedHobbies) => {
-    // selectedHobbies is array of { label, value }
-    this.setState({ selectedHobbies })
+  onSelectedItemsChange = (selectedItems) => {
+    this.setState({ selectedItems }, () => console.warn('Selected Items: ', selectedItems))
   }
 
   render () {
+    const { selectedItems } = this.state
     return (
-      <View style = {styles.style}>
-        <SelectMultiple
-          style = {styles.style}
-          items={hobbies}
-          renderLabel={renderLabel}
-          selectedItems={this.state.selectedHobbies}
-          onSelectionsChange={this.onSelectionsChange} />
-
-          <Button title="Submit" onPress={this.handleSignUp} />
+      <View style={styles.container}>
+        <View style={styles.multiSelectContainer}>
+          <MultiSelect
+            items={items}
+            uniqueKey='id'
+            onSelectedItemsChange={this.onSelectedItemsChange}
+            selectedItems={selectedItems}
+            selectText='Pick Items'
+            searchInputPlaceholderText='Search Items...'
+            onChangeInput={(text) => console.warn(text)}
+            tagRemoveIconColor='#CCC'
+            tagBorderColor='#CCC'
+            tagTextColor='#CCC'
+            selectedItemTextColor='#CCC'
+            selectedItemIconColor='#CCC'
+            itemTextColor='#000'
+            displayKey='name'
+            searchInputStyle={{ color: '#CCC' }}
+            submitButtonColor='#CCC'
+            submitButtonText='Submit'
+            removeSelected
+          />
+        </View>
       </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
-  style: {
-    backgroundColor: 'white'
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF'
+  },
+  multiSelectContainer: {
+    height: 400,
+    width: '80%'
   }
 })

@@ -2,28 +2,101 @@ import React from 'react'
 import { StyleSheet, Text, TextInput, View, Button,  TouchableOpacity} from 'react-native'
 import firebase from 'react-native-firebase'
 import { Switch } from 'react-native-switch'
+import MultiSelect from 'react-native-multiple-select';
 // import CustomMultiPicker from "react-native-multiple-select-list"
 //import MultipleChoice from 'react-native-multiple-choice'
 
+const hobbies = [{
+  id: 'Badminton',
+  name: 'Badminton'
+}, {
+  id: 'Basketball',
+  name: 'Basketball'
+}, {
+  id: 'Bowling',
+  name: 'Bowling'
+}, {
+  id: 'Chess',
+  name: 'Chess'
+}, {
+  id: 'Football',
+  name: 'Football'
+}, {
+  id: 'Fishing',
+  name: 'Fishing'
+}, {
+  id: 'Kayaking',
+  name: 'Kayaking'
+}, {
+  id: 'Rock Climbing',
+  name: 'Rock Climbing'
+}, {
+  id: 'Skiing',
+  name: 'Skiing'
+}, {
+  id: 'Snowboarding',
+  name: 'Snowboarding'
+}, {
+  id: 'Soccer',
+  name: 'Soccer'
+}, {
+  id: 'Tennis',
+  name: 'Tennis'
+}]
 
 export default class ChangeInfo extends React.Component {
-  state =  {  name: '', age: 0, location: '', aboutMe: '', funFact: ''}
+  state =  {  name: '', age: 0, location: '', aboutMe: '', funFact: '', spiritAnimal: '', selectedHobbies: []}
 
   componentDidMount() {
 
     const uid = firebase.auth().currentUser.uid;
-    let itemsRef = firebase.database().ref(`/Users/${uid}/info`);
+    let itemsRefInfo = firebase.database().ref(`/Users/${uid}/info`);
 
-    itemsRef.on('value', snapshot => {
+    let userName = "";
+    let userAge = "";
+    let userLocation = "";
+    let userMe = "";
+    let userFun = "";
+    let userAnimal = "";
+    let userHobbies = [];
+    let nameHold = "Name"
+    let ageHold = "Age"
+    let locationHold = "Location"
+    let factHold = "Fun Fact"
+    let animalHold = "Spirit Animal"
+    let aboutMeHold = "About Me"
+
+    itemsRefInfo.on('value', snapshot => {
       let data = snapshot.val();
-      let userName = data.name;
-      let userAge = data.age;
-      let userLocation = data.location;
-      let userMe = data.aboutMe;
-      let userFun = data.funFact;
-      let userAnimal = data.spiritAnimal;
+      if (snapshot.hasChild("name")) {
+        userName = data.name;
+        nameHold = data.name;
+      }
+      if (snapshot.hasChild("age")) {
+        userAge = data.age;
+        ageHold = data.age;
+      } 
+      if (snapshot.hasChild("location")) {
+        userLocation = data.location;
+        locationHold = data.location;
+      } 
+      if (snapshot.hasChild("aboutMe")) {
+        userMe = data.aboutMe;
+        aboutMeHold = data.aboutMe;
+      } 
+      if (snapshot.hasChild("funFact")) {
+        userFun = data.funFact;
+        factHold = data.funFact;
+      } 
+      if (snapshot.hasChild("spiritAnimal")) {
+        userAnimal = data.spiritAnimal;
+        animalHold = data.spiritAnimal;
+      }
+      if (snapshot.hasChild("selectedHobbies")) {
+        userHobbies = data.selectedHobbies;
+      } 
       // let items = Object.values(data);
-      this.setState({ name:userName, age:userAge, location:userLocation, aboutMe:userMe, funFact:userFun, spiritAnimal:userAnimal  });
+      this.setState({ name:userName, age:userAge, location:userLocation, aboutMe:userMe, funFact:userFun, spiritAnimal:userAnimal, selectedHobbies: userHobbies  });
     })
   }
 
@@ -31,7 +104,7 @@ export default class ChangeInfo extends React.Component {
   writeUserData = () => {
 
     const uid = firebase.auth().currentUser.uid;
-    const { errorMessage, name, age, location, funFact, spiritAnimal, aboutMe} = this.state
+    const { name, age, location, aboutMe, funFact, spiritAnimal, selectedHobbies} = this.state
 
     firebase.database().ref(`Users/${uid}/info`).set(this.state);
   }
@@ -47,9 +120,8 @@ export default class ChangeInfo extends React.Component {
     this.props.navigation.navigate('Profile')
   }
 
-  hobbySelect = () => {
-    this.writeUserData();
-    this.props.navigation.navigate('SelectHobbies')
+  onSelectedItemsChange = (selectedHobbies) => {
+    this.setState({ selectedHobbies });
   }
 
 
@@ -60,11 +132,9 @@ export default class ChangeInfo extends React.Component {
         <View style={styles.rectangle}>
         </View>
         <View style={styles.getStartedContainer}>
-        <TouchableOpacity onPress={() => this.hobbySelect}>
           <Text style={styles.getStartedText}>
             My Hobbi(s)
           </Text>
-        </TouchableOpacity>
         </View>
         {this.state.errorMessage &&
           <Text style={{ color: 'red' }}>
@@ -115,9 +185,30 @@ export default class ChangeInfo extends React.Component {
           multiline={true}
           numberOfLines={5}
         />
-
-        <Button style = {styles.buttonStyle} title="Submit" onPress={this.handleSubmit} />
-        <Button style = {styles.buttonStyle} title="Cancel" onPress={this.cancel} />
+        <View style={styles.multiSelectContainer}>
+          <MultiSelect
+            items={hobbies}
+            uniqueKey='id'
+            onSelectedItemsChange={this.onSelectedItemsChange}
+            selectedItems={this.state.selectedHobbies}
+            selectText='Pick Items'
+            searchInputPlaceholderText='Search Items...'
+            onChangeInput={(text) => console.warn(text)}
+            tagRemoveIconColor='gray'
+            tagBorderColor='gray'
+            tagTextColor='gray'
+            borderColor = 'gray'
+            selectedItemTextColor='gray'
+            selectedItemIconColor='gray'
+            itemTextColor='#000'
+            displayKey='name'
+            searchInputStyle={{ color: 'gray' }}
+            submitButtonColor='gray'
+            submitButtonText='Submit'
+            removeSelected
+          />
+          <Button title="Submit" onPress={this.handleSubmit} />
+        </View>
       </View>
     )
   }
@@ -130,8 +221,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'white'
   },
-  buttonStyle: {
-    top: 630
+  multiSelectContainer: {
+    height: 40,
+    width: '89%'
   },
   loginText: {
     position: 'absolute',

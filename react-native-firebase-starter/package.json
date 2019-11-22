@@ -14,6 +14,7 @@
     "apk": "cd android && ./gradlew assembleRelease",
     "rename": "node ./bin/rename.js",
     "start": "react-native start",
+    "run-ios": "react-native run-ios",
     "test": "jest",
     "lint": "eslint .",
     "postinstall": "npx jetify",
