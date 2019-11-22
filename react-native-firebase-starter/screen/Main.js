@@ -21,13 +21,13 @@ render() {
     return (
       <View
         style={styles.container}>
-        <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', paddingTop: '50%' }}>    
+        <View style={{ flex: 4, flexDirection: 'row', alignItems: 'center', paddingTop: '60%' }}>    
             <Image source = {require('../assets/Logo_main.png')}
               style = {styles.logo} />
 
             <Text style={styles.getStartedText}>Hobbi</Text>
         </View>
-        <View style={{flex:1, alignItems:'center', marginTop: '20%'}}>
+        <View style={{flex:2, alignItems:'center', marginBottom: '30%'}}>
           <View style={styles.rectangle}>
           </View>
           <TouchableOpacity style={styles.touch} onPress={() => this.props.navigation.navigate('Login')}>
@@ -45,7 +45,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#DFB662',
     alignItems: 'center',
     textAlign: 'center',
-    justifyContent: 'center'
   },
   logo: {
     width: 50,
