@@ -206,54 +206,49 @@ const styles = StyleSheet.create({
     backgroundColor: '#DFB662'
   },
   multiSelectContainer: {
-    height: 40,
+    height: '5%',
     width: '90%',
-    marginTop: 10
+    marginTop: '2%'
   },
   button: {
     marginTop: 20
   },
   rectangle: {
-    position: 'absolute',
-    width: 208,
-    height: 60,
-    left: 85,
-    top: 215,
-
-    backgroundColor: '#DFB662',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'white',
     borderWidth: 3, //solid #FFFBFB,
-    borderColor: "white",
+    borderColor: '#DFB662',
     borderRadius: 34.5
   },
   textInput: {
-    height: 40,
+    height: '5%',
     width: '90%',
     borderColor: 'gray',
     borderWidth: 1,
-    marginTop: 8,
-    backgroundColor: 'white',
-    color: 'black'
+    marginTop: '2%',
+    color: 'black',
+    backgroundColor: 'white'
   },
   getStartedContainer: {
     alignItems: 'center',
   },
   getStartedText: {
-    fontFamily: "MontserratAlternates-ExtraBold",
-    fontSize: 50,
-    color: 'white',
+    fontFamily: "Montserrat-ExtraBold",
+    fontSize: 25,
+    color: '#DFB662',
     textAlign: 'center',
   },
   chatButton: {
     position: 'absolute',
-    width: 50,
-    height: 50,
-    left: 312,
-    top: 30,
-    backgroundColor: '#DFB662'
+    width: '13%',
+    height: '5.7%',
+    right: '0%',
+    top: '4%',
+    backgroundColor: '#ECECEC'
   },
   chatButtonIcon: {
-    backgroundColor: '#DFB662',
-    left: 15,
-    top: 15,
-  }
+    position: 'absolute',
+    backgroundColor: '#ECECEC'
+  },
 })

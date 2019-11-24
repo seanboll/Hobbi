@@ -4,60 +4,9 @@ import firebase from 'react-native-firebase'
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
 export default class HobbyPage extends React.Component {
-  state =  {  name: '', age: 0, location: '', aboutMe: '', funFact: '', animal: '', selectedHobbies: []}
-
-  componentDidMount() {
-
-    //const uid = firebase.auth().currentUser.uid;
-    //let itemsRefInfo = firebase.database().ref(`/Users/${uid}/info`);
-    let usersRef = firebase.database().ref('/Users/')
-    let itemsRef = firebase.database().ref(`/Users/g0zbdloUcVXMAFISgYYE1ptWwKC3/info`);
-
-    let userName = "";
-    let userAge = "";
-    let userLocation = "";
-    let userMe = "";
-    let userFun = "";
-    let userAnimal = "";
-    let userHobbies = [];
-
-    usersRef.on('value', snapshot =>{
-      for (var key in snapshot.val()) {
-        itemsRef = firebase.database().ref(`/Users/{snapshot.val()[key]}/info`);
-      }
-    })
-
-    itemsRef.on('value', snapshot => {
-      let data = snapshot.val();
-      if (snapshot.hasChild("name")) {
-        userName = data.name;
-      }
-      if (snapshot.hasChild("age")) {
-        userAge = data.age;
-      } 
-      if (snapshot.hasChild("location")) {
-        userLocation = data.location;
-      } 
-      if (snapshot.hasChild("aboutMe")) {
-        userMe = data.aboutMe;
-      } 
-      if (snapshot.hasChild("funFact")) {
-        userFun = data.funFact;
-      } 
-      if (snapshot.hasChild("spiritAnimal")) {
-        userAnimal = data.spiritAnimal;
-      }
-      if (snapshot.hasChild("selectedHobbies")) {
-        userHobbies = data.selectedHobbies;
-      } 
-      // let items = Object.values(data);
-      this.setState({ name:userName, age:userAge, location:userLocation, aboutMe:userMe, funFact:userFun, spiritAnimal:userAnimal, selectedHobbies: userHobbies  });
-    })
-  }
-  
   render() {
     return (
-      <ScrollView
+      <View
         style={styles.container}>
 
         <TouchableHighlight
@@ -65,6 +14,13 @@ export default class HobbyPage extends React.Component {
          onPress={() => this.props.navigation.navigate('HomePage')}>
           <Image source = {require('../assets/Logo.png')}
             style = {styles.logo} />
+        </TouchableHighlight>
+
+        <TouchableHighlight
+         style={styles.EventButton}
+         onPress={() => this.props.navigation.navigate('EventPage')}>
+          <Image source = {require('../assets/People_switch.png')}
+            style = {styles.Event} />
         </TouchableHighlight>
 
         <Image source = {require('../assets/kayak.png')}
@@ -120,7 +76,7 @@ export default class HobbyPage extends React.Component {
          <Icon name="times-circle"  size={100} color = 'red' style = {styles.xButtonIcon}>
         </Icon>
         </TouchableHighlight>
-      </ScrollView>
+      </View>
   );
   }
 }
@@ -128,153 +84,162 @@ export default class HobbyPage extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ECECEC'
+    backgroundColor: '#ECECEC',
+    alignItems: 'center'
   },
   logo: {
-    width: 80,
-    height: 66.85,
-    position: 'absolute',
+    width: '100%',
+    height: '100%',
   },
   logoButton: {
-    width: 80,
-    height: 66.85,
+    width: '20%',
+    height: '8%',
     position: 'absolute',
-    left: 148,
-    top: 69,
+    alignItems: 'center',
+    top: '8%',
+  },
+  Event: {
+    width: '100%',
+    height: '100%',
+    resizeMode: "stretch"
+  },
+  EventButton: {
+    width: '20%',
+    height: '6%',
+    position: 'absolute',
+    left: '10%',
+    top: '10%',
   },
   profileButton: {
     position: 'absolute',
-    width: 50,
-    height: 50,
-    left: 15,
-    top: 30,
+    width: '13%',
+    height: '5.7%',
+    left: '5%',
+    top: '4%',
     backgroundColor: '#ECECEC'
   },
   profileButtonIcon: {
     position: 'absolute',
-    left: 15,
-    top: 15,
     backgroundColor: '#ECECEC'
   },
   profileBioHeader: {
     position: 'absolute',
-    width: 352,
-    left: 12,
-    top: 200,
+    width: '90%',
+    height: '25%',
+    top: '45%',
 
     fontFamily: 'Montserrat-Black',
-    fontSize: 18,
+    fontSize: 25,
     lineHeight: 35,
     textAlign: 'center'
   },
   profileBio: {
     position: 'absolute',
-    width: 352,
-    height: 232,
-    left: 12,
-    top: 404,
+    width: '90%',
+    height: '25%',
+    top: '50%',
 
     fontFamily: 'Montserrat-Bold',
-    fontSize: 25,
+    fontSize: 18,
     lineHeight: 35,
     textAlign: 'center'
   },
-  rectangle: {
-    height: 493,
-    width: 357,
-    backgroundColor: '#EBB448',
-    opacity: 0.3,
-    position: 'absolute', 
-    top: 163,
-    left: 9
-  },
   rectangleButton: {
-    height: 493,
-    width: 357,
+    height: '65%',
+    width: '95%',
     backgroundColor: '#EBB448',
     opacity: 0.3,
     position: 'absolute', 
-    top: 163,
-    left: 9
+    top: '17%',
+  },
+  rectangle: {
+    height: '65%',
+    width: '95%',
+    backgroundColor: '#EBB448',
+    opacity: 0.3,
+    position: 'absolute', 
+    top: '17%',
   },
   chatButton: {
     position: 'absolute',
-    width: 50,
-    height: 50,
-    left: 312,
-    top: 30,
+    width: '13%',
+    height: '5.7%',
+    right: '0%',
+    top: '4%',
     backgroundColor: '#ECECEC'
   },
   chatButtonIcon: {
     position: 'absolute',
-    left: 15,
-    top: 15,
     backgroundColor: '#ECECEC'
   },
   checkButton: {
     position: 'absolute',
-    width: 100,
-    height: 100,
-    left: 233,
-    top: 676,
+    width: '26%',
+    height: '10.4%',
+    right: '10%',
+    bottom:'5%',
     backgroundColor: '#ECECEC'
   },
   checkButtonIcon: {
     position: 'absolute',
+    width: '100%',
+    height: '100%',
     backgroundColor: '#ECECEC'
   },
   xButton: {
     position: 'absolute',
-    width: 100,
-    height: 100,
-    left: 43,
-    top: 676,
+    width: '26%',
+    height: '10.4%',
+    left: '10%',
+    bottom:'5%',
     backgroundColor: '#ECECEC'
   },
   xButtonIcon: {
     position: 'absolute',
+    width: '100%',
+    height: '100%',
     backgroundColor: '#ECECEC'
   },
   kayak: {
     position: 'absolute',
-    width: 100,
-    height: 100,
-    left: 35,
-    top: 204,
+    width: '26%',
+    height: '11%',
+    left: '15%',
+    top: '20%',
   },
   rockClimb: {
     position: 'absolute',
-    width: 100,
-    height: 100,
-    left: 240,
-    top: 204,
+    width: '26%',
+    height: '11%',
+    right: '15%',
+    top: '20%',
   },
   badminton: {
     position: 'absolute',
-    width: 100,
-    height: 100,
-    left: 35,
-    top: 363,
+    width: '26%',
+    height: '11%',
+    left: '15%',
+    top: '43%',
   },
   bowling: {
     position: 'absolute',
-    width: 100,
-    height: 100,
-    left: 240,
-    top: 363,
+    width: '26%',
+    height: '11%',
+    right: '15%',
+    top: '43%',
   },
   basketball: {
     position: 'absolute',
-    width: 100,
-    height: 100,
-    left: 35,
-    top: 522,
+    width: '26%',
+    height: '11%',
+    left: '15%',
+    bottom:'23%'
   },
   chess: {
     position: 'absolute',
-    width: 100,
-    height: 100,
-    left: 240,
-    top: 522,
+    width: '26%',
+    height: '11%',
+    right: '15%',
+    bottom:'23%'
   }
 });

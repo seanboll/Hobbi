@@ -1,7 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, TextInput, View, Button,  TouchableOpacity, TouchableHighlight} from 'react-native'
 import firebase from 'react-native-firebase'
-import { Switch } from 'react-native-switch'
 import MultiSelect from 'react-native-multiple-select';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 // import CustomMultiPicker from "react-native-multiple-select-list"
@@ -235,27 +234,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#ECECEC'
   },
-  container2: {
-    flex: 1,
-    backgroundColor: '#ECECEC'
-  },
   multiSelectContainer: {
-    height: 40,
-    width: '89%',
-    marginTop: 10
+    height: '5%',
+    width: '90%',
+    marginTop: '2%'
   },
   button: {
     marginTop: 20
-  },
-  loginText: {
-    position: 'absolute',
-    left: 87,
-    top: 610,
-    fontFamily: "Montserrat-ExtraBold",
-    fontSize: 18,
-    lineHeight: 22,
-    textAlign: 'left',
-    color: 'white'
   },
   rectangle: {
     justifyContent: 'center',
@@ -266,16 +251,13 @@ const styles = StyleSheet.create({
     borderRadius: 34.5
   },
   textInput: {
-    height: 40,
+    height: '5%',
     width: '90%',
     borderColor: 'gray',
     borderWidth: 1,
-    marginTop: 8,
+    marginTop: '2%',
     color: 'black',
     backgroundColor: 'white'
-  },
-  switch: {
-    marginTop: 15
   },
   getStartedContainer: {
     alignItems: 'center',
@@ -288,15 +270,14 @@ const styles = StyleSheet.create({
   },
   chatButton: {
     position: 'absolute',
-    width: 50,
-    height: 50,
-    left: 312,
-    top: 30,
+    width: '13%',
+    height: '5.7%',
+    right: '0%',
+    top: '4%',
     backgroundColor: '#ECECEC'
   },
   chatButtonIcon: {
-    backgroundColor: '#ECECEC',
-    left: 15,
-    top: 15,
-  }
+    position: 'absolute',
+    backgroundColor: '#ECECEC'
+  },
 })

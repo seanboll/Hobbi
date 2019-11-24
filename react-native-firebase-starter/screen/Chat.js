@@ -6,14 +6,17 @@ import Icon from 'react-native-vector-icons/dist/FontAwesome';
 export default class Chat extends React.Component {
   render() {
     return (
-      <ScrollView
+      <View
         style={styles.container}>
 
-        <Icon name="comments"  size={60} color = '#EBB448' style = {styles.chatPageLogo}>
-        </Icon>
+        <View
+        style={styles.container2}>
+          <Icon name="comments"  size={60} color = '#EBB448' style = {styles.chatPageLogo}>
+          </Icon>
+        </View>
 
-        <Image source = {require('../assets/profile_picture_example2.png')}
-          style = {styles.profilePicture} />
+          <Image source = {require('../assets/profile_picture_example2.png')}
+            style = {styles.profilePicture} />
 
 
         <TouchableHighlight
@@ -22,7 +25,7 @@ export default class Chat extends React.Component {
          <Icon name="chevron-left"  size={30} color = 'gray' style = {styles.homepageButtonIcon}>
         </Icon>
         </TouchableHighlight>
-      </ScrollView>
+      </View>
   );
   }
 }
@@ -30,34 +33,37 @@ export default class Chat extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ECECEC'
+    backgroundColor: '#ECECEC',
+  },
+  container2: {
+    flex: 1,
+    backgroundColor: '#ECECEC',
+    alignItems: 'center'
   },
   chatPageLogo: {
     position: 'absolute',
-    left: 158,
-    top: 45,
+    top: '4%',
   },
   profilePicture: {
-    width: 70,
-    height: 70,
+    position: 'absolute',
+    width: '17.5%',
+    height: '7.28%',
     borderRadius: 140,
     borderColor: 'black',
-    left: 13,
-    top: 139,
+    left: '10%',
+    top: '15%',
     borderWidth: 1
   },
   homepageButton: {
     position: 'absolute',
-    width: 50,
-    height: 50,
-    left: 15,
-    top: 30,
+    width: '13%',
+    height: '5.7%',
+    left: '5%',
+    top: '4%',
     backgroundColor: '#ECECEC'
   },
   homepageButtonIcon: {
     position: 'absolute',
-    left: 15,
-    top: 15,
     backgroundColor: '#ECECEC'
   }
 });
