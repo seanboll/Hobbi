@@ -4,7 +4,7 @@ import firebase from 'react-native-firebase'
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
 export default class EventPage extends React.Component {
-  state =  {  name: '', age: 0, location: '', aboutMe: '', funFact: '', spiritAnimal: '', selectedHobbies: [], recommendedList: [], placement: 0}
+  state =  {  name: '', age: 0, location: '', aboutMe: '', funFact: '', spiritAnimal: '', selectedHobbies: [], recommendedList: [], placement: 0, currentlyMatched: []}
 
   componentDidMount() {
 
@@ -16,12 +16,15 @@ export default class EventPage extends React.Component {
     let params = this.props.navigation.state.params
     let random;
     let myPlacement;
+    let userMatch = [];
     if (params == null){
       random = userList[0]
       myPlacement = 0
+      userMatch = []
     } else {
       random = this.props.navigation.state.params.name
-      myPlacement = this.props.navigation.state.params.placement 
+      myPlacement = this.props.navigation.state.params.placement
+      userMatch = this.props.navigation.state.params.matches
     }
     itemsRef = firebase.database().ref(`/Users/${random}/info`);
     let userName = "";
@@ -32,7 +35,6 @@ export default class EventPage extends React.Component {
     let userAnimal = "";
     let userHobbies = [];
     //let myList = []
-    this.setState({ name:userName, age:userAge, location:userLocation, aboutMe:userMe, funFact:userFun, spiritAnimal:userAnimal, selectedHobbies: userHobbies, recommendedList: userList, placement:myPlacement});
 
     // ref.once("value", function(snapshot) {
     //   snapshot.forEach(function(childSnapshot) {
@@ -72,7 +74,7 @@ export default class EventPage extends React.Component {
         userHobbies = data.selectedHobbies;
       } 
       // let items = Object.values(data);
-      this.setState({ name:userName, age:userAge, location:userLocation, aboutMe:userMe, funFact:userFun, spiritAnimal:userAnimal, selectedHobbies: userHobbies, recommendedList: userList, placement:myPlacement});
+      this.setState({ name:userName, age:userAge, location:userLocation, aboutMe:userMe, funFact:userFun, spiritAnimal:userAnimal, selectedHobbies: userHobbies, recommendedList: userList, placement:myPlacement, currentlyMatched: userMatch});
     })
   }
   
@@ -83,14 +85,14 @@ export default class EventPage extends React.Component {
 
         <TouchableHighlight
          style={styles.logoButton}
-         onPress={() => this.props.navigation.navigate('EventPage')}>
+         onPress={() => this.props.navigation.navigate('EventPage', {name: this.state.recommendedList[this.state.placement], placement: this.state.placement, matches: this.state.currentlyMatched})}>
           <Image source = {require('../assets/Logo.png')}
             style = {styles.logo} />
         </TouchableHighlight>
 
         <TouchableHighlight
          style={styles.EventButton}
-         onPress={() => this.props.navigation.navigate('HomePage', {name: this.state.recommendedList[this.state.placement], placement: this.state.placement})}>
+         onPress={() => this.props.navigation.navigate('HomePage', {name: this.state.recommendedList[this.state.placement], placement: this.state.placement, matches: this.state.currentlyMatched})}>
           <Image source = {require('../assets/Events_switch.png')}
             style = {styles.Event} />
         </TouchableHighlight>
@@ -117,35 +119,35 @@ export default class EventPage extends React.Component {
 
         <TouchableHighlight
            style={styles.infoButton}
-           onPress={() => this.props.navigation.navigate('UserInfo', {name: this.state.recommendedList[this.state.placement], placement: this.state.placement})}>
+           onPress={() => this.props.navigation.navigate('UserInfo', {name: this.state.recommendedList[this.state.placement], placement: this.state.placement, matches: this.state.currentlyMatched})}>
            <Icon name="info"  size={30} color = '#696969'>
           </Icon>
         </TouchableHighlight>
 
         <TouchableHighlight
          style={styles.profileButton}
-         onPress={() => this.props.navigation.navigate('Profile', {name: this.state.recommendedList[this.state.placement], placement: this.state.placement})}>
+         onPress={() => this.props.navigation.navigate('Profile', {name: this.state.recommendedList[this.state.placement], placement: this.state.placement, matches: this.state.currentlyMatched})}>
          <Icon name="user"  size={30} color = 'gray' style = {styles.profileButtonIcon}>
         </Icon>
         </TouchableHighlight>
 
         <TouchableHighlight
          style={styles.chatButton}
-         onPress={() => this.props.navigation.navigate('Chat', {name: this.state.recommendedList[this.state.placement], placement: this.state.placement})}>
+         onPress={() => this.props.navigation.navigate('Chat', {name: this.state.recommendedList[this.state.placement], placement: this.state.placement, matches: this.state.currentlyMatched})}>
          <Icon name="comments"  size={30} color = 'gray' style = {styles.chatButtonIcon}>
         </Icon>
         </TouchableHighlight>
 
         <TouchableHighlight
          style={styles.checkButton}
-         onPress={() => this.props.navigation.navigate('HomePage', {name: this.state.recommendedList[this.state.placement], placement: this.state.placement})}>
+         onPress={() => this.props.navigation.navigate('HomePage', {name: this.state.recommendedList[this.state.placement], placement: this.state.placement, matches: this.state.currentlyMatched})}>
          <Icon name="check-circle"  size={100} color = 'green' style = {styles.checkButtonIcon}>
         </Icon>
         </TouchableHighlight>
 
         <TouchableHighlight
          style={styles.xButton}
-         onPress={() => this.props.navigation.navigate('HomePage', {name: this.state.recommendedList[this.state.placement], placement: this.state.placement})}>
+         onPress={() => this.props.navigation.navigate('HomePage', {name: this.state.recommendedList[this.state.placement], placement: this.state.placement, matches: this.state.currentlyMatched})}>
          <Icon name="times-circle"  size={100} color = 'red' style = {styles.xButtonIcon}>
         </Icon>
         </TouchableHighlight>

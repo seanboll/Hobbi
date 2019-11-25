@@ -45,7 +45,7 @@ const hobbies = [{
 }]
 
 export default class ChangeInfo extends React.Component {
-  state =  {  name: '', age: 0, location: '', aboutMe: '', funFact: '', spiritAnimal: '', selectedHobbies: [], recommendedList: [], placement: 0}
+  state =  {  name: '', age: 0, location: '', aboutMe: '', funFact: '', spiritAnimal: '', selectedHobbies: [], recommendedList: [], placement: 0, currentlyMatched: []}
 
   componentDidMount() {
 
@@ -64,12 +64,15 @@ export default class ChangeInfo extends React.Component {
     let params = this.props.navigation.state.params
     let random;
     let myPlacement;
+    let userMatch = [];
     if (params == null){
       random = userList[0]
       myPlacement = 0
+      userMatch = []
     } else {
       random = this.props.navigation.state.params.name
-      myPlacement = this.props.navigation.state.params.placement 
+      myPlacement = this.props.navigation.state.params.placement
+      userMatch = this.props.navigation.state.params.matches
     }
 
     let nameHold = "Name"
@@ -109,7 +112,7 @@ export default class ChangeInfo extends React.Component {
         userHobbies = data.selectedHobbies;
       } 
       // let items = Object.values(data);
-      this.setState({ name:userName, age:userAge, location:userLocation, aboutMe:userMe, funFact:userFun, spiritAnimal:userAnimal, selectedHobbies: userHobbies, recommendedList: userList, placement:myPlacement});
+      this.setState({ name:userName, age:userAge, location:userLocation, aboutMe:userMe, funFact:userFun, spiritAnimal:userAnimal, selectedHobbies: userHobbies, recommendedList: userList, placement:myPlacement, currentlyMatched: userMatch});
     })
   }
 
@@ -130,7 +133,7 @@ export default class ChangeInfo extends React.Component {
 
   // Go to profile page, and reset matching, place hold
   handleSubmit = () => {
-    this.props.navigation.navigate('Profile', {name: this.state.recommendedList[this.state.placement], placement: this.state.placement})
+    this.props.navigation.navigate('Profile', {name: this.state.recommendedList[this.state.placement], placement: this.state.placement, matches: this.state.currentlyMatched})
   }
 
   onSelectedItemsChange = (selectedHobbies) => {
@@ -153,7 +156,7 @@ export default class ChangeInfo extends React.Component {
       <View style={styles.container}>
         <TouchableHighlight
            style={styles.chatButton}
-           onPress={() => this.props.navigation.navigate('Profile', {name: this.state.recommendedList[this.state.placement], placement: this.state.placement})}>
+           onPress={() => this.props.navigation.navigate('Profile', {name: this.state.recommendedList[this.state.placement], placement: this.state.placement, matches: this.state.currentlyMatched})}>
            <Icon name="chevron-right"  size={30} color = 'gray' style = {styles.chatButtonIcon}>
           </Icon>
           </TouchableHighlight>

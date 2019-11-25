@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/dist/FontAwesome';
 // import { f, auth, database, storage } from '../config/config';
 
 export default class HomePage extends React.Component {
-  state =  {  name: '', age: 0, location: '', aboutMe: '', funFact: '', spiritAnimal: '', selectedHobbies: [], recommendedList: [], placement: 0}
+  state =  {  name: '', age: 0, location: '', aboutMe: '', funFact: '', spiritAnimal: '', selectedHobbies: [], recommendedList: [], placement: 0, currentlyMatched: []}
 
   componentDidMount() {
 
@@ -24,12 +24,15 @@ export default class HomePage extends React.Component {
     let params = this.props.navigation.state.params
     let random;
     let myPlacement;
+    let userMatch = [];
     if (params == null){
       random = userList[0]
       myPlacement = 0
+      userMatch = []
     } else {
       random = this.props.navigation.state.params.name
-      myPlacement = this.props.navigation.state.params.placement 
+      myPlacement = this.props.navigation.state.params.placement
+      userMatch = this.props.navigation.state.params.matches
     }
 
     itemsRef.on('value', snapshot => {
@@ -56,7 +59,7 @@ export default class HomePage extends React.Component {
         userHobbies = data.selectedHobbies;
       } 
       // let items = Object.values(data);
-      this.setState({ name:userName, age:userAge, location:userLocation, aboutMe:userMe, funFact:userFun, spiritAnimal:userAnimal, selectedHobbies: userHobbies, recommendedList: userList, placement:myPlacement  });
+      this.setState({ name:userName, age:userAge, location:userLocation, aboutMe:userMe, funFact:userFun, spiritAnimal:userAnimal, selectedHobbies: userHobbies, recommendedList: userList, placement:myPlacement, currentlyMatched: userMatch});
     })
   }
 
@@ -83,14 +86,14 @@ export default class HomePage extends React.Component {
 
         <TouchableHighlight
          style={styles.settingButton}
-         onPress={() => this.props.navigation.navigate('Main', {name: this.state.recommendedList[this.state.placement], placement: this.state.placement})}>
+         onPress={() => this.props.navigation.navigate('Main', {name: this.state.recommendedList[this.state.placement], placement: this.state.placement, matches: this.state.currentlyMatched})}>
          <Image source = {require('../assets/logout.png')}
           style = {styles.settingButtonIcon} />
         </TouchableHighlight>
 
         <TouchableHighlight
          style={styles.arrowButton}
-         onPress={() => this.props.navigation.navigate('HomePage', {name: this.state.recommendedList[this.state.placement], placement: this.state.placement})}>
+         onPress={() => this.props.navigation.navigate('HomePage', {name: this.state.recommendedList[this.state.placement], placement: this.state.placement, matches: this.state.currentlyMatched})}>
          <Icon name="chevron-right"  size={30} color = 'gray' style = {styles.arrowButtonIcon}>
         </Icon>
         </TouchableHighlight>
@@ -98,7 +101,7 @@ export default class HomePage extends React.Component {
         <View style={styles.editCenter}>
         <TouchableHighlight
          style={styles.editInfo}
-         onPress={() => this.props.navigation.navigate('ChangeInfo', {name: this.state.recommendedList[this.state.placement], placement: this.state.placement})}>
+         onPress={() => this.props.navigation.navigate('ChangeInfo', {name: this.state.recommendedList[this.state.placement], placement: this.state.placement, matches: this.state.currentlyMatched})}>
          <Icon name="edit"  size={30} color = 'gray' style = {styles.editInfoIcon}>
         </Icon>
         </TouchableHighlight>

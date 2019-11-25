@@ -8,7 +8,7 @@ function update() {
   return ref.once("value");
 }
 export default class Chat extends React.Component {
-  state =  {  name: '', age: 0, location: '', aboutMe: '', funFact: '', spiritAnimal: '', selectedHobbies: [], recommendedList: [], placement: 0}
+  state =  {  name: '', age: 0, location: '', aboutMe: '', funFact: '', spiritAnimal: '', selectedHobbies: [], recommendedList: [], placement: 0, currentlyMatched: []}
 
   componentDidMount() {
 
@@ -20,12 +20,15 @@ export default class Chat extends React.Component {
     let params = this.props.navigation.state.params
     let random;
     let myPlacement;
+    let userMatch = [];
     if (params == null){
       random = userList[0]
       myPlacement = 0
+      userMatch = []
     } else {
       random = this.props.navigation.state.params.name
-      myPlacement = this.props.navigation.state.params.placement 
+      myPlacement = this.props.navigation.state.params.placement
+      userMatch = this.props.navigation.state.params.matches
     }
     itemsRef = firebase.database().ref(`/Users/${random}/info`);
     let userName = "";
@@ -36,7 +39,6 @@ export default class Chat extends React.Component {
     let userAnimal = "";
     let userHobbies = [];
     //let myList = []
-    this.setState({ name:userName, age:userAge, location:userLocation, aboutMe:userMe, funFact:userFun, spiritAnimal:userAnimal, selectedHobbies: userHobbies, recommendedList: userList, placement:myPlacement});
 
     // ref.once("value", function(snapshot) {
     //   snapshot.forEach(function(childSnapshot) {
@@ -76,7 +78,7 @@ export default class Chat extends React.Component {
         userHobbies = data.selectedHobbies;
       } 
       // let items = Object.values(data);
-      this.setState({ name:userName, age:userAge, location:userLocation, aboutMe:userMe, funFact:userFun, spiritAnimal:userAnimal, selectedHobbies: userHobbies, recommendedList: userList, placement:myPlacement});
+      this.setState({ name:userName, age:userAge, location:userLocation, aboutMe:userMe, funFact:userFun, spiritAnimal:userAnimal, selectedHobbies: userHobbies, recommendedList: userList, placement:myPlacement, currentlyMatched: userMatch});
     })
   }
 
@@ -89,15 +91,23 @@ export default class Chat extends React.Component {
         style={styles.container2}>
           <Icon name="comments"  size={60} color = '#EBB448' style = {styles.chatPageLogo}>
           </Icon>
+
+          { this.state.currentlyMatched.map((item, key)=>(
+         <Image source = {require('../assets/profile_picture_example2.png')}
+          style = {styles.profilePicture} />)
+         )}
+        
+
+        { this.state.currentlyMatched.map((item, key)=>(
+         <Text key={key} style={styles.profileUser}> {item} </Text>)
+         )}
         </View>
 
-          <Image source = {require('../assets/profile_picture_example2.png')}
-            style = {styles.profilePicture} />
 
 
         <TouchableHighlight
          style={styles.homepageButton}
-         onPress={() => this.props.navigation.navigate('HomePage', {name: this.state.recommendedList[this.state.placement], placement: this.state.placement})}>
+         onPress={() => this.props.navigation.navigate('HomePage', {name: this.state.recommendedList[this.state.placement], placement: this.state.placement, matches: this.state.currentlyMatched})}>
          <Icon name="chevron-left"  size={30} color = 'gray' style = {styles.homepageButtonIcon}>
         </Icon>
         </TouchableHighlight>
@@ -116,6 +126,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#ECECEC',
     alignItems: 'center'
   },
+  container3: {
+    flex:1,
+    backgroundColor: '#ECECEC',
+    alignItems: 'center'
+  },
   chatPageLogo: {
     position: 'absolute',
     top: '4%',
@@ -126,9 +141,18 @@ const styles = StyleSheet.create({
     height: '7.28%',
     borderRadius: 140,
     borderColor: 'black',
-    left: '10%',
+    left: '15%',
     top: '15%',
     borderWidth: 1
+  },
+  profileUser: {
+    position: 'relative',
+    width: '15%',
+    height: '15%',
+    fontFamily: 'Montserrat-Bold',
+    fontSize: 18,
+    left: '0%',
+    top: '18%',
   },
   homepageButton: {
     position: 'absolute',
