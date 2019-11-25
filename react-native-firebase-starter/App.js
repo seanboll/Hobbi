@@ -8,6 +8,7 @@ import SignUp from './screen/SignUp'
 import Login from './screen/Login'
 import Main from './screen/Main'
 import HomePage from './screen/HomePage'
+import HomePage1 from './screen/HomePage1'
 import Profile from './screen/Profile'
 import Chat from './screen/Chat'
 import UserInfo from './screen/UserInfo'
@@ -35,6 +36,9 @@ const AppStack = createSwitchNavigator(
 	},
 	HomePage: {
 		screen: HomePage
+	},
+	HomePage1: {
+		screen: HomePage1
 	},
 	Main: {
 		screen: Main
@@ -67,6 +71,7 @@ const AppStack = createSwitchNavigator(
 		screen: EventPage
 	}
 });
+console.disableYellowBox = true;
 export default createAppContainer(
   AppStack
 );
