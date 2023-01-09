@@ -23,7 +23,7 @@
   "dependencies": {
     "@mdi/font": "^4.5.95",
     "expo": "^35.0.1",
-    "firebase-admin": "^8.8.0",
+    "firebase-admin": "^11.4.1",
     "jetifier": "^1.6.4",
     "native": "^0.3.3",
     "prop-types": "^15.7.2",
